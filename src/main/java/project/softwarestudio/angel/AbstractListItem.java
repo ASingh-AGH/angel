@@ -3,7 +3,7 @@ package project.softwarestudio.angel;
 /**
  * Class representing the item that can be listed within app
  */
-public abstract class AListItem {
+public abstract class AbstractListItem {
     /**
      * Name of the item
      */
