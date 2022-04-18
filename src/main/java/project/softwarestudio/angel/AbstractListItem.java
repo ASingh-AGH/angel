@@ -38,4 +38,20 @@ public abstract class AbstractListItem {
     public String getName(){
         return this.name;
     }
+
+    /**
+     * Function that sets the description for item
+     * @param desc Description
+     */
+    public void setDesc(String desc){
+        this.desc = desc; // strings are immutable so no cloning is needed
+    }
+
+    /**
+     * Getter of description
+     * @return Description of item
+     */
+    public String getDesc(){
+        return this.desc;
+    }
 }
