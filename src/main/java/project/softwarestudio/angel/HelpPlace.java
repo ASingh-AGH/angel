@@ -6,6 +6,8 @@ package project.softwarestudio.angel;
  */
 public class HelpPlace extends AbstractListItem {
 
+    private Location loc;
+
     public static HelpPlace createHelpPlace(String name, String desc, int id){
         var hp = new HelpPlace();
         hp.id = id;
