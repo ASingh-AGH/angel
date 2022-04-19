@@ -54,4 +54,12 @@ public abstract class AbstractListItem {
     public String getDesc(){
         return this.desc;
     }
+
+    /**
+     * Getter of Id
+     * @return Id of item
+     */
+    public int getId(){
+        return this.id;
+    }
 }
