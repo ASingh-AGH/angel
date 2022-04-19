@@ -10,22 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@RestController
 public class AngelApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AngelApplication.class, args);
 	}
 
-	/**
-	 * Test method used to check configuration of environment, should be removed in production
-	 * @param name		Name to be used in parsed string
-	 * @return			Parsed string
-	 */
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
-	}
+
 
 	/**
 	 * 	Function used to set native security configuration
@@ -33,10 +24,8 @@ public class AngelApplication {
 	@Bean
 	SecurityFilterChain web(HttpSecurity http) throws Exception {
 		http
-				// ...
 				.authorizeHttpRequests(authorize -> authorize
-						.mvcMatchers("/hello").permitAll()
-
+						.mvcMatchers("/api/**").permitAll()
 				);
 
 		return http.build();
