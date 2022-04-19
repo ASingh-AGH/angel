@@ -5,6 +5,14 @@ package project.softwarestudio.angel;
  */
 public class HelpOffer extends AbstractListItem {
 
+    public static HelpOffer createHelpPlace(String name, String desc, int id){
+        var ho = new HelpOffer();
+        ho.id = id;
+        ho.name = name;
+        ho.desc = desc;
+        return ho;
+    }
+
     /**
      * Function that returns the url to page with details
      *
@@ -12,6 +20,6 @@ public class HelpOffer extends AbstractListItem {
      */
     @Override
     public String getDetailsUrl() {
-        return "/api/details/offers/{"+this.id+"}/";
+        return "/api/details/offers/"+this.id+"/";
     }
 }

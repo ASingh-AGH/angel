@@ -6,6 +6,13 @@ package project.softwarestudio.angel;
  */
 public class HelpPlace extends AbstractListItem {
 
+    public static HelpPlace createHelpPlace(String name, String desc, int id){
+        var hp = new HelpPlace();
+        hp.id = id;
+        hp.name = name;
+        hp.desc = desc;
+        return hp;
+    }
     /**
      * Function that returns the url to page with details
      *
@@ -13,6 +20,6 @@ public class HelpPlace extends AbstractListItem {
      */
     @Override
     public String getDetailsUrl() {
-        return "/api/details/places/{"+this.id+"}/";
+        return "/api/details/places/"+this.id+"/";
     }
 }
