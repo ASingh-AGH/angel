@@ -11,7 +11,7 @@ public abstract class AbstractListItem {
     /**
      * Description of item
      */
-    protected String desc;
+    protected String description;
     /**
      * Id of item
      */
@@ -41,18 +41,18 @@ public abstract class AbstractListItem {
 
     /**
      * Function that sets the description for item
-     * @param desc Description
+     * @param description Description
      */
-    public void setDesc(String desc){
-        this.desc = desc; // strings are immutable so no cloning is needed
+    public void setDescription(String description){
+        this.description = description; // strings are immutable so no cloning is needed
     }
 
     /**
      * Getter of description
      * @return Description of item
      */
-    public String getDesc(){
-        return this.desc;
+    public String getDescription(){
+        return this.description;
     }
 
     /**

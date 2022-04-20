@@ -3,7 +3,7 @@ CREATE TABLE angel_locations(
 	id SERIAL PRIMARY KEY,
 	geo GEOGRAPHY,
 	building TEXT,
-	apartment_number TEXT,
+	apartmentNumber TEXT,
 	street TEXT,
 	city TEXT,
 	zip TEXT
@@ -13,8 +13,8 @@ CREATE TABLE angel_places(
 	id SERIAL PRIMARY KEY,
 	name TEXT,
 	description TEXT,
-	location_id INT,
+	locationId INT,
 	CONSTRAINTS location_id_fk
-		FOREIGN KEY (location_id)
+		FOREIGN KEY (locationId)
 		REFERENCES angel_locations(id)
 );

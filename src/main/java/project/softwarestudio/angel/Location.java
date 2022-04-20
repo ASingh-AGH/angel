@@ -21,7 +21,7 @@ public class Location {
     /**
      * Apartment number
      */
-    private String apartment_number;
+    private String apartmentNumber;
     /**
      * Street name
      */
@@ -59,12 +59,12 @@ public class Location {
         this.building = building;
     }
 
-    public String getApartment_number() {
-        return apartment_number;
+    public String getApartmentNumber() {
+        return apartmentNumber;
     }
 
-    public void setApartment_number(String apartment_number) {
-        this.apartment_number = apartment_number;
+    public void setApartmentNumber(String apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
     }
 
     public String getStreet() {

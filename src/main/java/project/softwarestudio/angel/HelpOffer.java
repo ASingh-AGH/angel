@@ -11,7 +11,7 @@ public class HelpOffer extends AbstractListItem {
         var ho = new HelpOffer();
         ho.id = id;
         ho.name = name;
-        ho.desc = desc;
+        ho.description = desc;
         return ho;
     }
 

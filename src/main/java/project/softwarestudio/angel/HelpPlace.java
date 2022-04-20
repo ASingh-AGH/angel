@@ -12,7 +12,7 @@ public class HelpPlace extends AbstractListItem {
         var hp = new HelpPlace();
         hp.id = id;
         hp.name = name;
-        hp.desc = desc;
+        hp.description = desc;
         return hp;
     }
     /**
