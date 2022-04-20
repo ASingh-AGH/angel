@@ -1,5 +1,7 @@
 package project.softwarestudio.angel;
 
+import org.springframework.data.annotation.Id;
+
 /**
  * Class representing the item that can be listed within app
  */
@@ -15,6 +17,7 @@ public abstract class AbstractListItem {
     /**
      * Id of item
      */
+    @Id
     protected int id;
 
     /**

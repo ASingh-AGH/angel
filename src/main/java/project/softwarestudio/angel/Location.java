@@ -1,5 +1,7 @@
 package project.softwarestudio.angel;
 
+import org.springframework.data.annotation.Id;
+
 import java.awt.*;
 
 /**
@@ -9,6 +11,7 @@ public class Location {
     /**
      * Location id
      */
+    @Id
     private int id;
     /**
      * Geography localisation on the map
