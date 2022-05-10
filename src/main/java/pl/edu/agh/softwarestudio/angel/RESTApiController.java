@@ -1,8 +1,14 @@
-package project.softwarestudio.angel;
+package pl.edu.agh.softwarestudio.angel;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pl.edu.agh.softwarestudio.angel.offers.HelpOffer;
+import pl.edu.agh.softwarestudio.angel.places.HelpPlace;
+import pl.edu.agh.softwarestudio.angel.places.HelpPlaceRepo;
+import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 
@@ -17,22 +23,7 @@ public class RESTApiController {
         return "Angel REST API is working!";
     }
 
-    @GetMapping("/api/list/places")
-    public ArrayList<HelpPlace> listPlaces(
-            @RequestParam(value = "limit", defaultValue = "100") String limit,
-            @RequestParam(value = "firstEl", defaultValue = "-1") String firstEl
-    ) {
-        return TestDataSet.hp();
-    }
 
-
-    @GetMapping("/api/list/offers")
-    public ArrayList<HelpOffer> listOffers(
-            @RequestParam(value = "limit", defaultValue = "100") String limit,
-            @RequestParam(value = "firstEl", defaultValue = "-1") String firstEl
-    ) {
-        return TestDataSet.ho();
-    }
 
     /*
     *

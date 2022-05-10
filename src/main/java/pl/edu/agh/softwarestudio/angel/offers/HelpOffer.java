@@ -1,4 +1,7 @@
-package project.softwarestudio.angel;
+package pl.edu.agh.softwarestudio.angel.offers;
+
+import pl.edu.agh.softwarestudio.angel.AbstractListItem;
+import pl.edu.agh.softwarestudio.angel.Location;
 
 /**
  * Class that represents help offer
@@ -6,6 +9,18 @@ package project.softwarestudio.angel;
 public class HelpOffer extends AbstractListItem {
 
     private Location loc;
+
+    private Integer creatorUserId;
+
+    public Integer getCreatorUserId() {
+        return creatorUserId;
+    }
+
+    public void setCreatorUserId(Integer creatorUserId) {
+        this.creatorUserId = creatorUserId;
+    }
+
+
 
     public static HelpOffer createHelpPlace(String name, String desc, int id){
         var ho = new HelpOffer();

@@ -1,4 +1,4 @@
-package project.softwarestudio.angel;
+package pl.edu.agh.softwarestudio.angel;
 
 import org.springframework.data.annotation.Id;
 
@@ -18,7 +18,7 @@ public abstract class AbstractListItem {
      * Id of item
      */
     @Id
-    protected int id;
+    protected Integer id;
 
     /**
      * Function that returns the url to page with details
@@ -62,7 +62,15 @@ public abstract class AbstractListItem {
      * Getter of Id
      * @return Id of item
      */
-    public int getId(){
+    public Integer getId(){
         return this.id;
+    }
+
+    /**
+     * Setter of Id
+     * @param id Id of item
+     */
+    public void setId(Integer id){
+        this.id = id;
     }
 }

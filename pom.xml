@@ -8,7 +8,7 @@
 		<version>2.6.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>project.softwarestudio</groupId>
+	<groupId>pl.edu.agh.softwarestudio</groupId>
 	<artifactId>angel</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>angel</name>
