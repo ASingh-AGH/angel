@@ -1,4 +1,4 @@
-package pl.edu.agh.softwarestudio.angel;
+package pl.edu.agh.softwarestudio.angel.location;
 
 import org.springframework.data.annotation.Id;
 

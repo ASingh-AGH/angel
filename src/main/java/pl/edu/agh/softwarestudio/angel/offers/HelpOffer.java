@@ -1,7 +1,7 @@
 package pl.edu.agh.softwarestudio.angel.offers;
 
 import pl.edu.agh.softwarestudio.angel.AbstractListItem;
-import pl.edu.agh.softwarestudio.angel.Location;
+import pl.edu.agh.softwarestudio.angel.location.Location;
 
 /**
  * Class that represents help offer
