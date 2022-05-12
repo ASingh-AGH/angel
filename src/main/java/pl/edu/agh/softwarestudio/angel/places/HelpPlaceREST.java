@@ -41,8 +41,9 @@ public class HelpPlaceREST {
         //TODO Security checks, if user authenticated
         place.setAccepted(false);
         place.setId(null);
-        //Mono<Location> newLocation = locationRepo.save(place.getLoc().block());
-        //lace.setLocationId(newLocation.block().getId());
+        Mono<Location> newLocation = locationRepo.save(place.getLoc());
+        place.setLocationId(newLocation.block().getId());
+        place.setLoc(null);
         return helpPlaceRepo.save(place);
     }
 }

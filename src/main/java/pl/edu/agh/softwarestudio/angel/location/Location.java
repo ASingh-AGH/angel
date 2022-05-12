@@ -1,6 +1,7 @@
 package pl.edu.agh.softwarestudio.angel.location;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 
 import java.awt.*;
 
@@ -16,7 +17,11 @@ public class Location {
     /**
      * Geography localisation on the map
      */
-    private Point geo;
+    private float geoX;
+    /**
+     * Geography localisation on the map
+     */
+    private float gooY;
     /**
      * Building number
      */
@@ -24,6 +29,7 @@ public class Location {
     /**
      * Apartment number
      */
+    @Column("apartmentNumber")
     private String apartmentNumber;
     /**
      * Street name
@@ -44,14 +50,6 @@ public class Location {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Point getGeo() {
-        return geo;
-    }
-
-    public void setGeo(Point geo) {
-        this.geo = geo;
     }
 
     public String getBuilding() {
@@ -92,5 +90,21 @@ public class Location {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public float getGeoX() {
+        return geoX;
+    }
+
+    public void setGeoX(float geoX) {
+        this.geoX = geoX;
+    }
+
+    public float getGooY() {
+        return gooY;
+    }
+
+    public void setGooY(float gooY) {
+        this.gooY = gooY;
     }
 }
