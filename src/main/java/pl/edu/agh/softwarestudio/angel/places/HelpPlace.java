@@ -19,7 +19,7 @@ public class HelpPlace extends AbstractListItem {
 
 
     @Transient  /* Tells db that the field actually does not exist */
-    private Mono<Location> loc;
+    private Location loc;
     @Column("locationId")
     private Integer locationId;
     private boolean accepted;
@@ -57,11 +57,11 @@ public class HelpPlace extends AbstractListItem {
         this.locationId = locationId;
     }
 
-    public Mono<Location> getLoc() {
+    public Location getLoc() {
         return loc;
     }
 
-    public void setLoc(Mono<Location> loc) {
+    public void setLoc(Location loc) {
         this.loc = loc;
     }
 }

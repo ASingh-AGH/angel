@@ -23,7 +23,8 @@ public class AngelApplication {
 		http
 				.authorizeHttpRequests(authorize -> authorize
 						.mvcMatchers("/api/**").permitAll()
-				);
+				)
+				.csrf().disable();
 
 		return http.build();
 	}
