@@ -17,11 +17,13 @@ public class Location {
     /**
      * Geography localisation on the map
      */
+    @Column("geoX")
     private float geoX;
     /**
      * Geography localisation on the map
      */
-    private float gooY;
+    @Column("geoY")
+    private float geoY;
     /**
      * Building number
      */
@@ -100,11 +102,11 @@ public class Location {
         this.geoX = geoX;
     }
 
-    public float getGooY() {
-        return gooY;
+    public float getGeoY() {
+        return geoY;
     }
 
-    public void setGooY(float gooY) {
-        this.gooY = gooY;
+    public void setGeoY(float gooY) {
+        this.geoY = gooY;
     }
 }
