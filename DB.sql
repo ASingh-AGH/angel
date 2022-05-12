@@ -26,14 +26,3 @@ CREATE TABLE angel.HelpPlace(
   	FOREIGN KEY (locationId)
   	REFERENCES angel.Location(id)
   );
-
-
-CREATE TABLE angel.Locations(
-    id SERIAL PRIMARY KEY,
-    geo GEOGRAPHY,
-    building TEXT,
-    apartmentNumber TEXT,
-    street TEXT,
-    city TEXT,
-    zip TEXT
-);
