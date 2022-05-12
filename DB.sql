@@ -8,7 +8,8 @@ CREATE SCHEMA angel
 -- This table should store all information about the location address to refer it in other tables
 CREATE TABLE angel.Location(
   	id SERIAL PRIMARY KEY,
-  	geo GEOGRAPHY,
+  	geoX FLOAT,
+  	geoY FLOAT,
   	building TEXT,
   	apartmentNumber TEXT,
   	street TEXT,
