@@ -29,4 +29,8 @@ public class HelpOfferREST {
         helpOffer.setId(null);
         return helpOfferRepo.save(helpOffer);
     }
+    @GetMapping("/{offerId}")
+    public Mono<HelpOffer> getHelpOfferById(@PathVariable("offerId") Long offerId){
+        return helpOfferRepo.findById(offerId);
+    }
 }

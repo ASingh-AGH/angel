@@ -46,4 +46,9 @@ public class HelpPlaceREST {
         place.setLoc(null);
         return helpPlaceRepo.save(place);
     }
+
+    @GetMapping("/{placeId}")
+    public Mono<HelpPlace> getPlaceById(@PathVariable("placeId") Long placeId){
+        return helpPlaceRepo.findById(placeId);
+    }
 }
