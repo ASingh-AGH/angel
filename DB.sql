@@ -27,3 +27,15 @@ CREATE TABLE angel.HelpPlace(
   	FOREIGN KEY (locationId)
   	REFERENCES angel.Location(id)
   );
+
+CREATE TABLE angel.Users(
+    id SERIAL PRIMARY KEY,
+    username TEXT,
+    passHash TEXT,
+    email TEXT
+);
+
+CREATE TABLE angel.Categories(
+    id SERIAL PRIMARY KEY,
+    name TEXT
+);
