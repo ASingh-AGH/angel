@@ -35,7 +35,7 @@ CREATE TABLE angel.Users(
     email TEXT
 );
 
-CREATE TABLE angel.Categories(
+CREATE TABLE angel.Category(
     id SERIAL PRIMARY KEY,
     name TEXT
 );
