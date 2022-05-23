@@ -19,7 +19,10 @@ __Build tool: Maven__
 - `master` - __Production ready version__
 - `dev` - Tested and ready features
 - each feature is developed under own branch
-
+  
+  
+  
+- `1-rest-interface-for-listing-help-offers` - backend for listing offers and places where help is provided
 ---
 
 ## Documenting the code
