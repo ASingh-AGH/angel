@@ -6,12 +6,13 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/api/offer")
 public class HelpOfferREST {
 
     @Autowired
     HelpOfferRepo helpOfferRepo;
 
-    @GetMapping("/api/list/offers")
+    @GetMapping
     public Flux<HelpOffer> listOffers(
             @RequestParam(value = "limit", defaultValue = "100") int limit,
             @RequestParam(value = "offset", defaultValue = "0") int offset
@@ -19,7 +20,7 @@ public class HelpOfferREST {
         return helpOfferRepo.selectOffset(limit,offset);
     }
 
-    @PostMapping("/api/create/offer")
+    @PostMapping
     public Mono<HelpOffer> createNewHelpOffer(
             @RequestBody HelpOffer helpOffer
     ){

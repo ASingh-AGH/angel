@@ -21,7 +21,7 @@ public class HelpPlaceREST {
      * @param offset offset of data
      * @return
      */
-    @GetMapping("list")
+    @GetMapping
     public Flux<HelpPlace> listPlaces(
             @RequestParam(value = "limit", defaultValue = "100") int limit,
             @RequestParam(value = "offset", defaultValue = "0") int offset
@@ -29,12 +29,12 @@ public class HelpPlaceREST {
         return helpPlaceRepo.selectOffset(limit, offset);
     }
 
-    @GetMapping("all")
-    public Flux<HelpPlace> listPlacesAll() {
-        return helpPlaceRepo.findAll();
-    }
+//    @GetMapping("all")
+//    public Flux<HelpPlace> listPlacesAll() {
+//        return helpPlaceRepo.findAll();
+//    }
 
-    @PostMapping("newHelpPlace")
+    @PostMapping
     public Mono<HelpPlace> reportNewHelpPlace(
             @RequestBody HelpPlace place
     ){
