@@ -8,13 +8,14 @@
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
+//import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
 //import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 //
 //import java.util.List;
 //
 //@Configuration
-//@EnableR2dbcRepositories
+//@EnableJpaRepositories
 //public class AppConfig extends AbstractR2dbcConfiguration {
 //
 //    //...
