@@ -1,6 +1,7 @@
 package pl.edu.agh.softwarestudio.angel.location;
 
 import lombok.Data;
+import lombok.Getter;
 import org.springframework.data.annotation.Id;
 
 
@@ -19,7 +20,7 @@ public class Location {
      * Location id
      */
     @Id
-    private int id;
+    private Integer id;
     /**
      * Geography localisation on the map
      */
@@ -49,5 +50,12 @@ public class Location {
      */
     private String zip;
 
+
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 }

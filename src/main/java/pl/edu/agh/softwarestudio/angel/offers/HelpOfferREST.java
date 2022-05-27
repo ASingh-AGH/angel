@@ -1,27 +1,35 @@
 package pl.edu.agh.softwarestudio.angel.offers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/offer")
 public class HelpOfferREST {
 
-    @Autowired
+
     HelpOfferRepo helpOfferRepo;
 
+    {
+        helpOfferRepo = new HelpOfferRepoService().getRepo();
+    }
+
     @GetMapping
-    public Flux<HelpOffer> listOffers(
-            @RequestParam(value = "limit", defaultValue = "100") int limit,
-            @RequestParam(value = "offset", defaultValue = "0") int offset
+    public List<HelpOffer> getPage(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "itemsPerPage", defaultValue = "10") int itemsPerPage
     ) {
-        return helpOfferRepo.selectOffset(limit,offset);
+
+        return helpOfferRepo.findAll(PageRequest.of(page,itemsPerPage)).getContent();
     }
 
     @PostMapping
-    public Mono<HelpOffer> createNewHelpOffer(
+    public HelpOffer createNewHelpOffer(
             @RequestBody HelpOffer helpOffer
     ){
         //TODO verify if user is signed in
@@ -30,7 +38,7 @@ public class HelpOfferREST {
         return helpOfferRepo.save(helpOffer);
     }
     @GetMapping("/{offerId}")
-    public Mono<HelpOffer> getHelpOfferById(@PathVariable("offerId") Long offerId){
-        return helpOfferRepo.findById(offerId);
+    public HelpOffer getHelpOfferById(@PathVariable("offerId") Integer offerId){
+        return helpOfferRepo.findById(offerId).get();
     }
 }
