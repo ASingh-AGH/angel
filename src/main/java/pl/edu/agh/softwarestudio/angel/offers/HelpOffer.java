@@ -1,34 +1,23 @@
 package pl.edu.agh.softwarestudio.angel.offers;
 
+import lombok.Data;
 import pl.edu.agh.softwarestudio.angel.AbstractListItem;
 import pl.edu.agh.softwarestudio.angel.location.Location;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Class that represents help offer
  */
+@Entity
+@Data
+@Table(name="HelpOffer")
 public class HelpOffer extends AbstractListItem {
 
     private Location loc;
 
     private Integer creatorUserId;
-
-    public Integer getCreatorUserId() {
-        return creatorUserId;
-    }
-
-    public void setCreatorUserId(Integer creatorUserId) {
-        this.creatorUserId = creatorUserId;
-    }
-
-
-
-    public static HelpOffer createHelpPlace(String name, String desc, int id){
-        var ho = new HelpOffer();
-        ho.id = id;
-        ho.name = name;
-        ho.description = desc;
-        return ho;
-    }
 
     /**
      * Function that returns the url to page with details
@@ -37,6 +26,6 @@ public class HelpOffer extends AbstractListItem {
      */
     @Override
     public String getDetailsUrl() {
-        return "/api/details/offers/"+this.id+"/";
+        return "/api/offer/"+this.id+"/";
     }
 }
