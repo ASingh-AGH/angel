@@ -1,25 +1,22 @@
-package pl.edu.agh.softwarestudio.angel.location;
+package pl.edu.agh.softwarestudio.angel.places;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
-import pl.edu.agh.softwarestudio.angel.AppConfig;
-import reactor.core.publisher.Mono;
 
 @Service
-public class LocationRepoService {
+public class HelpPlaceRepoService {
     @Autowired
-    private static LocationRepo locationRepo;
-
+    private static HelpPlaceRepo helpPlaceRepo;
     private static ApplicationContext ctx;
 
-    static{
+    static {
         ctx = new AnnotationConfigApplicationContext();
-        locationRepo = ctx.getBean(LocationRepo.class);
-    }
-    public LocationRepo getRepo(){
-        return locationRepo;
+        helpPlaceRepo = ctx.getBean(HelpPlaceRepo.class);
     }
 
+    public HelpPlaceRepo getRepo(){
+        return helpPlaceRepo;
+    }
 }
