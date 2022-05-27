@@ -46,7 +46,7 @@ public class HelpPlaceConventer implements Converter<Row, HelpPlace> {
         LocationRepoService lrs = new LocationRepoService();
 //        hp.setLoc(loc);
 
-        hp.setLoc(lrs.getRepo().findById(source.get("locationId", Long.class)));
+//        hp.setLoc(lrs.getRepo().findById(source.get("locationId", Long.class)));
         return hp;
     }
 }
