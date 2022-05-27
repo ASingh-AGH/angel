@@ -1,11 +1,11 @@
 package pl.edu.agh.softwarestudio.angel.location;
 
 import lombok.Data;
-import lombok.Getter;
-import org.springframework.data.annotation.Id;
+
 
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.awt.*;
 

@@ -1,10 +1,13 @@
 package pl.edu.agh.softwarestudio.angel;
 
-import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Class representing the item that can be listed within app
  */
+@Entity
 public abstract class AbstractListItem {
     /**
      * Name of the item
