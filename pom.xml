@@ -68,8 +68,10 @@
 		<dependency>
 			<groupId>io.r2dbc</groupId>
 			<artifactId>r2dbc-postgresql</artifactId>
-			<scope>runtime</scope>
+<!--			<scope>runtime</scope>-->
 		</dependency>
+
+
 
 
 		<dependency>

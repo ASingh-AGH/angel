@@ -1,7 +1,10 @@
 package pl.edu.agh.softwarestudio.angel.places;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.agh.softwarestudio.angel.AppConfig;
 import pl.edu.agh.softwarestudio.angel.location.Location;
 import pl.edu.agh.softwarestudio.angel.location.LocationRepo;
 import reactor.core.publisher.Flux;
@@ -12,8 +15,8 @@ import reactor.core.publisher.Mono;
 public class HelpPlaceREST {
     @Autowired
     HelpPlaceRepo helpPlaceRepo;
-    @Autowired
-    LocationRepo locationRepo;
+
+//    private LocationRepo locationRepo;
 
     /**
      * GET Request /api/list/places/ showing places from database with offset from the
@@ -41,8 +44,8 @@ public class HelpPlaceREST {
         //TODO Security checks, if user authenticated
         place.setAccepted(false);
         place.setId(null);
-        Mono<Location> newLocation = locationRepo.save(place.getLoc());
-        place.setLocationId(newLocation.block().getId());
+//        Mono<Location> newLocation = locationRepo.save(place.getLoc());
+//        place.setLocationId(newLocation.block().getId());
         place.setLoc(null);
         return helpPlaceRepo.save(place);
     }

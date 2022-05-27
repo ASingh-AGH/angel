@@ -6,6 +6,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 import pl.edu.agh.softwarestudio.angel.AbstractListItem;
 import pl.edu.agh.softwarestudio.angel.location.Location;
+import pl.edu.agh.softwarestudio.angel.location.LocationRepoService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -64,4 +65,5 @@ public class HelpPlace extends AbstractListItem {
     public void setLoc(Location loc) {
         this.loc = loc;
     }
+
 }

@@ -10,15 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.softwarestudio.angel.location.Location;
 import pl.edu.agh.softwarestudio.angel.location.LocationRepo;
+import pl.edu.agh.softwarestudio.angel.location.LocationRepoService;
 
-@Controller
 @ReadingConverter
 public class HelpPlaceConventer implements Converter<Row, HelpPlace> {
 // why does not work?
 //    @Autowired
 //    private LocationRepo locationRepo;
-    @Autowired
-    private LocationRepo locationRepo;
+    //https://mariadb.com/docs/connect/programming-languages/java-r2dbc/spring/repositories/
+
     /**
      * Convert the source object of type {@code S} to target type {@code T}.
      *
@@ -43,9 +43,10 @@ public class HelpPlaceConventer implements Converter<Row, HelpPlace> {
         hp.setName(source.get("name", String.class));
         hp.setLocationId(source.get("locationId",Integer.class));
         hp.setDescription(source.get("description",String.class));
+        LocationRepoService lrs = new LocationRepoService();
 //        hp.setLoc(loc);
 
-        //hp.setLoc(locationRepo.findById(source.get("locationId", Long.class)).block());
+//        hp.setLoc((Location) lrs.getRepo().findById(source.get("locationId", Long.class)).);
         return hp;
     }
 }
