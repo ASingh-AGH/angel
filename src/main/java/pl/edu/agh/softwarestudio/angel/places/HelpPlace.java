@@ -6,8 +6,6 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 import pl.edu.agh.softwarestudio.angel.AbstractListItem;
 import pl.edu.agh.softwarestudio.angel.location.Location;
-import pl.edu.agh.softwarestudio.angel.location.LocationRepoService;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -20,7 +18,7 @@ public class HelpPlace extends AbstractListItem {
 
 
     @Transient  /* Tells db that the field actually does not exist */
-    private Location loc;
+    private Mono<Location> loc;
     @Column("locationId")
     private Integer locationId;
     private boolean accepted;
@@ -58,11 +56,11 @@ public class HelpPlace extends AbstractListItem {
         this.locationId = locationId;
     }
 
-    public Location getLoc() {
+    public Mono<Location> getLoc() {
         return loc;
     }
 
-    public void setLoc(Location loc) {
+    public void setLoc(Mono<Location> loc) {
         this.loc = loc;
     }
 
