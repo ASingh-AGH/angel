@@ -7,7 +7,7 @@ import javax.persistence.Id;
 /**
  * Class representing the item that can be listed within app
  */
-@Entity
+//@Entity //Causes issues as hibernate thinks it is real table
 public abstract class AbstractListItem {
     /**
      * Name of the item

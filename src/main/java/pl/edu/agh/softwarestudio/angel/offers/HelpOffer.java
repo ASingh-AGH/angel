@@ -4,8 +4,7 @@ import lombok.Data;
 import pl.edu.agh.softwarestudio.angel.AbstractListItem;
 import pl.edu.agh.softwarestudio.angel.location.Location;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Class that represents help offer
@@ -14,7 +13,14 @@ import javax.persistence.Table;
 @Data
 @Table(name="HelpOffer")
 public class HelpOffer extends AbstractListItem {
-
+    @Id
+    private Integer id;
+    @OneToOne
+    @JoinTable(
+            name = "Locations",
+            joinColumns = @JoinColumn(name = "locationId"),
+            inverseJoinColumns = @JoinColumn(name = "id")
+    )
     private Location loc;
 
     private Integer creatorUserId;
