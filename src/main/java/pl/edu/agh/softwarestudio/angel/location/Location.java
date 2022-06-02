@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -19,7 +20,7 @@ import java.awt.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="Location")
+@Table(name = "location")
 public class Location {
     /**
      * Location id
@@ -29,30 +30,37 @@ public class Location {
     /**
      * Geography localisation on the map
      */
+    @Column(name = "geox")
     private float geoX;
     /**
      * Geography localisation on the map
      */
+    @Column(name = "geoy")
     private float geoY;
     /**
      * Building number
      */
+    @Column(name="building")
     private String building;
     /**
      * Apartment number
      */
+    @Column(name="apartmentnumber")
     private String apartmentNumber;
     /**
      * Street name
      */
+    @Column(name = "street")
     private String street;
     /**
      * City name
      */
+    @Column(name = "city")
     private String city;
     /**
      * Zip code
      */
+    @Column(name = "zip")
     private String zip;
 
 

@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import pl.edu.agh.softwarestudio.angel.location.Location;
+import pl.edu.agh.softwarestudio.angel.location.LocationRepo;
 import pl.edu.agh.softwarestudio.angel.places.HelpPlace;
 import pl.edu.agh.softwarestudio.angel.places.HelpPlaceRepo;
 
@@ -22,6 +24,9 @@ public class AngelApplication implements CommandLineRunner {
 //	public static ApplicationContext ctx;
 	@Autowired
 	private HelpPlaceRepo helpPlaceRepo;
+
+	@Autowired
+	private LocationRepo locationRepo;
 	public static void main(String[] args) {
 		SpringApplication.run(AngelApplication.class, args);
 
@@ -31,6 +36,9 @@ public class AngelApplication implements CommandLineRunner {
 	public void run(String ... args){
 		List<HelpPlace> hps = helpPlaceRepo.findAll();
 		hps.forEach(System.out :: println);
+
+		List<Location> loc = locationRepo.findAll();
+		loc.forEach(System.out :: println);
 	}
 
 	/**
