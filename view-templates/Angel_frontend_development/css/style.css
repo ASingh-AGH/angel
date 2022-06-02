@@ -546,6 +546,27 @@ ul.btn li:last-child {
     text-align: justify
 }
 
+
+.postingdate h5 { 
+     /* 
+     
+     <div class="postingdate">
+                              <h5>Date Created</h5>
+                              </div>\                         
+                              */
+     
+     font-size: 15px;
+     color:#222222;
+     /* line-height: 55px; */
+     /* font-weight: bold; */
+     padding: 0;
+     /* text-transform: uppercase; */
+     /* border-bottom: #ffeb3b solid 2px; */
+     max-width: 50%;
+     /* margin: auto; */
+     text-align: left;
+ }
+
 .d_flex {
      display: flex;
      align-items: center;
