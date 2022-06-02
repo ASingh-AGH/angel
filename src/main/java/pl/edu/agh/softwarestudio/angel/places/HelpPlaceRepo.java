@@ -4,9 +4,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
-@Repository
-public interface HelpPlaceRepo extends JpaRepository<HelpPlace, Long> {
+import java.util.List;
 
+@Repository
+public interface HelpPlaceRepo extends JpaRepository<HelpPlace, Integer> {
+//    @Override
+//    List<HelpPlace> findAll();
 //    @Query("select * from HelpPlace ORDER BY id DESC LIMIT $1 OFFSET $2")
 //    Flux<HelpPlace> selectOffset(int limit, int offset);
 

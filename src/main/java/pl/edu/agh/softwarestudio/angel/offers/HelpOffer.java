@@ -1,6 +1,9 @@
 package pl.edu.agh.softwarestudio.angel.offers;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import pl.edu.agh.softwarestudio.angel.AbstractListItem;
 import pl.edu.agh.softwarestudio.angel.location.Location;
 
@@ -11,6 +14,9 @@ import javax.persistence.*;
  */
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name="HelpOffer")
 public class HelpOffer extends AbstractListItem {
     @Id

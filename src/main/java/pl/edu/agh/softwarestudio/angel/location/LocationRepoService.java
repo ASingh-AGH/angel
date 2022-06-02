@@ -10,11 +10,11 @@ import pl.edu.agh.softwarestudio.angel.AngelApplication;
 @Service
 public class LocationRepoService {
     @Autowired
-    private static LocationRepo locationRepo;
+    private LocationRepo locationRepo;
 
-    static{
-        locationRepo = AngelApplication.ctx.getBean(LocationRepo.class);
-    }
+//    static{
+//        locationRepo = AngelApplication.ctx.getBean(LocationRepo.class);
+//    }
     public LocationRepo getRepo(){
         return locationRepo;
     }

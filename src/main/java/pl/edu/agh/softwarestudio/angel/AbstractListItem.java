@@ -3,11 +3,13 @@ package pl.edu.agh.softwarestudio.angel;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  * Class representing the item that can be listed within app
  */
 //@Entity //Causes issues as hibernate thinks it is real table
+@MappedSuperclass
 public abstract class AbstractListItem {
     /**
      * Name of the item

@@ -9,12 +9,12 @@ import pl.edu.agh.softwarestudio.angel.AngelApplication;
 @Service
 public class CategoryRepoService {
     @Autowired
-    private static CategoryRepo categoryRepo;
+    private CategoryRepo categoryRepo;
 
-    static {
-
-        categoryRepo = AngelApplication.ctx.getBean(CategoryRepo.class);
-    }
+//    static {
+//
+//        categoryRepo = AngelApplication.ctx.getBean(CategoryRepo.class);
+//    }
 
     public CategoryRepo getRepo(){
         return categoryRepo;

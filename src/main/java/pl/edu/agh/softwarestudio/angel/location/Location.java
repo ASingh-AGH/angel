@@ -1,7 +1,9 @@
 package pl.edu.agh.softwarestudio.angel.location;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 
 
 import javax.persistence.Entity;
@@ -14,6 +16,9 @@ import java.awt.*;
  */
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name="Location")
 public class Location {
     /**

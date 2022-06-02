@@ -9,11 +9,11 @@ import pl.edu.agh.softwarestudio.angel.AngelApplication;
 @Service
 public class HelpPlaceRepoService {
     @Autowired
-    private static HelpPlaceRepo helpPlaceRepo;
+    private HelpPlaceRepo helpPlaceRepo;
 
-    static {
-        helpPlaceRepo = AngelApplication.ctx.getBean(HelpPlaceRepo.class);
-    }
+//    static {
+//        helpPlaceRepo = AngelApplication.ctx.getBean(HelpPlaceRepo.class);
+//    }
 
     public HelpPlaceRepo getRepo(){
         return helpPlaceRepo;
