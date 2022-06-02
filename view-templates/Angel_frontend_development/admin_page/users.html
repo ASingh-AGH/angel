@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Admin Panel</title>
+      <!-- mobile metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="../vendors/feather/feather.css">
+        <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
+        <link rel="stylesheet" href="../vendors/typicons/typicons.css">
+        <link rel="stylesheet" href="../vendors/simple-line-icons/css/simple-line-icons.css">
+        
+        <link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+        <link rel="stylesheet" href="../js/select.dataTables.min.css">
+        <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
+        <!-- endinject -->
+        <link rel="shortcut icon" href="../images/angel_logo1.png" />
+         <!-- bootstrap css -->
+            <link rel="stylesheet" href="../css/bootstrap.min.css">
+            <!-- style css -->
+            <link rel="stylesheet" href="../css/style.css">
+            <!-- Responsive-->
+            <link rel="stylesheet" href="../css/responsive.css">
+            <!-- fevicon -->
+            <link rel="icon" href="../images/fevicon.png" type="image/gif" />
+            <!-- Scrollbar Custom CSS -->
+            <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
+            <!-- Tweaks for older IEs-->
+            <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+            <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day', 'Visitors'],
+          ['29.05',  356],
+          ['30.05',  682],
+          ['31.05',  927],
+          ['01.06',  1987],
+          ['02.06',  2564],
+          ['03.06',  4389],
+          ['04.06',  2453],
+          ['05.06',  2012],
+          ['06.06',  1987]
+        ]);
+
+        var options = {
+          title: '',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+      </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="../images/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a href="../index.html"><img src="../images/angel_logo.png" alt="#" /></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active">
+                                 <a class="nav-link" href="../index.html">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="../about.html">About</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link">Contact</a>
+                              </li>
+
+                              <li class="nav-item">
+                                 <a class="nav-link">Map</a>
+                              </li>
+
+                              <li class="nav-item d_none">
+                                 <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                              </li>
+                              <li class="nav-item d_none">
+                                 <a class="nav-link" href="../login.html">Login</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <!-- end header inner -->
+      <!-- end header -->
+      <!-- banner -->
+      <section class="banner_main">
+         
+      </section>
+      <!-- end banner -->
+      <div class="container-fluid page-body-wrapper">
+      <div class="theme-setting-wrapper">
+        
+      </div>
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+         <div style = "position:absolute; top:200px;">
+         
+         <ul class="nav">
+           <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="collapse" href="admin.html" aria-expanded="false" aria-controls="ui-basic">
+               <i class="menu-icon mdi mdi-chart-line"></i>
+               <span class="menu-title">Site Visitors</span>
+               <i class="menu-arrow"></i> 
+             </a>
+           </li>
+           
+           <li class="nav-item nav-category">Users</li>
+           <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="collapse" href="users.html" aria-expanded="false" aria-controls="ui-basic">
+               <i class="menu-icon mdi mdi-account-circle-outline"></i>
+               <span class="menu-title">List of users</span>
+               <i class="menu-arrow"></i> 
+             </a>
+           </li>
+           <li class="nav-item nav-category">Offers</li>
+           <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="collapse" href="offers.html" aria-expanded="false" aria-controls="form-elements">
+               <i class="menu-icon mdi mdi-card-text-outline"></i>
+               <span class="menu-title">Offers</span>
+               <i class="menu-arrow"></i>
+             </a>
+             <div class="collapse" id="form-elements">
+               <ul class="nav flex-column sub-menu">
+                 <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">List of offers</a></li>
+               </ul>
+             </div>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="collapse" href="notifications.html" aria-expanded="false" aria-controls="charts">
+               <i class="menu-icon mdi mdi-layers-outline"></i>
+               <span class="menu-title">Notifications</span>
+               <i class="menu-arrow"></i>
+             </a>
+             <div class="collapse" id="charts">
+               <ul class="nav flex-column sub-menu">
+                 <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
+               </ul>
+             </div>
+           </li>
+           
+         </ul>
+      </div>
+      </nav>
+      <div class="main-panel">
+         <div class="content-wrapper">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="home-tab">
+                  
+                  <div class="tab-content tab-content-basic">
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
+                      <div class="row">
+                       
+                      </div> 
+                      <div class="row">
+                      
+                        <div class="col-lg-15 d-flex flex-column">
+                          <div class="col-lg-8 d-flex flex-column">
+                            <div class="row flex-grow">
+                              <div class="col-12 grid-margin stretch-card">
+                                <div class="card card-rounded">
+                                  <div class="card-body">
+                                    <div class="row">
+                                      <div class="col-lg-12">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                          <div>
+                                            <h4 class="card-title card-title-dash">List of users</h4>
+                                          </div>
+                                        </div>
+                                        <div class="mt-3">
+                                          <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                                            <div class="d-flex">
+                                              
+                                              <div class="wrapper ms-3">
+                                                <p class="ms-1 mb-1 fw-bold">Brandon Washington</p>
+                                                <small class="text-muted mb-0" style = "position:relative; left:5px">bwash@gxyz.com</small>
+                                              </div>
+                                            </div>
+                                            <div class="text-muted text-small" style = "position:relative; left:150px">
+                                              <button type="button">Edit</button>
+                                            </div>
+                                            <div class="text-muted text-small"><button type="button">
+                                              Delete </button>
+                                            </div>
+                                          </div>
+                                          <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                                            <div class="d-flex">
+                                              
+                                              <div class="wrapper ms-3">
+                                                <p class="ms-1 mb-1 fw-bold">John Smith</p>
+                                                <small class="text-muted mb-0" style = "position:relative; left:5px">jsmith@gxyz.com</small>
+                                              </div>
+                                            </div>
+                                            <div class="text-muted text-small" style = "position:relative; left:182px">
+                                              <button type="button">Edit</button>
+                                            </div>
+                                            <div class="text-muted text-small"><button type="button">
+                                              Delete </button>
+                                            </div>
+                                          </div>
+                                          <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                                            <div class="d-flex">
+                                              
+                                              <div class="wrapper ms-3">
+                                                <p class="ms-1 mb-1 fw-bold">Joe Doe</p>
+                                                <small class="text-muted mb-0" style = "position:relative; left:5px">jdoe@gxyz.com</small>
+                                              </div>
+                                            </div>
+                                            <div class="text-muted text-small" style = "position:relative; left:186px">
+                                              <button type="button">Edit</button>
+                                            </div>
+                                            <div class="text-muted text-small"><button type="button">
+                                              Delete </button>
+                                            </div>
+                                          </div>
+                                          <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                                            <div class="d-flex">
+                                              
+                                              <div class="wrapper ms-3">
+                                                <p class="ms-1 mb-1 fw-bold">Alice Kowalski</p>
+                                                <small class="text-muted mb-0" style = "position:relative; left:5px">akowalski@gxyz.com</small>
+                                              </div>
+                                            </div>
+                                            <div class="text-muted text-small" style = "position:relative; left:172px">
+                                              <button type="button">Edit</button>
+                                            </div>
+                                            <div class="text-muted text-small"><button type="button">
+                                              Delete </button>
+                                            </div>
+                                          </div>
+                                          <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                                            <div class="d-flex">
+                                              
+                                              <div class="wrapper ms-3">
+                                                <p class="ms-1 mb-1 fw-bold">Ross Geller</p>
+                                                <small class="text-muted mb-0" style = "position:relative; left:5px">rgeller@gxyz.com</small>
+                                              </div>
+                                            </div>
+                                            <div class="text-muted text-small" style = "position:relative; left:179px">
+                                              <button type="button">Edit</button>
+                                            </div>
+                                            <div class="text-muted text-small"><button type="button">
+                                              Delete </button>
+                                            </div>
+                                          </div>
+                                          <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                                            <div class="d-flex">
+                                              
+                                              <div class="wrapper ms-3">
+                                                <p class="ms-1 mb-1 fw-bold">Rachel Green</p>
+                                                <small class="text-muted mb-0" style = "position:relative; left:5px">rgreen@gxyz.com</small>
+                                              </div>
+                                            </div>
+                                            <div class="text-muted text-small" style = "position:relative; left:173px">
+                                              <button type="button">Edit</button>
+                                            </div>
+                                            <div class="text-muted text-small"><button type="button">
+                                              Delete </button>
+                                            </div>
+                                          </div>
+                                          <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                                            <div class="d-flex">
+                                              
+                                              <div class="wrapper ms-3">
+                                                <p class="ms-1 mb-1 fw-bold">Monica Geller</p>
+                                                <small class="text-muted mb-0" style = "position:relative; left:5px">mgeller@gxyz.com</small>
+                                              </div>
+                                            </div>
+                                            <div class="text-muted text-small" style = "position:relative; left:172px">
+                                              <button type="button">Edit</button>
+                                            </div>
+                                            <div class="text-muted text-small"><button type="button">
+                                              Delete </button>
+                                            
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+      </div>
+   </div>
+  </div>
+</div>
+
+
+      <!--  footer -->
+      <footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <img class="logo1" src="../images/angel_logo_white.png" alt="#"/>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <h3>Team members</h3>
+                     <ul class="about_us">
+                        <li> Jakub Skrzyński <br> Piotr Mastalerz <br> Ali Awada <br> Apoorva Singh </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>Software Studio Angle Frontend Template Sample V1 Winter 2022</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="../js/jquery.min.js"></script>
+      <script src="../js/popper.min.js"></script>
+      <script src="../js/bootstrap.bundle.min.js"></script>
+      <script src="../js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="../js/custom.js"></script>
+   </body>
+</html>
+
