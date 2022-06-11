@@ -886,6 +886,12 @@ ul.social_icon li a:hover {
      border: inherit;
 }
 
+
+.about .titlepage time {
+     padding: 30px 0;
+}
+
+
 .about .titlepage p {
      padding: 30px 0;
 }
@@ -896,6 +902,25 @@ ul.social_icon li a:hover {
 
 .about_img figure img {
      width: 100%;
+}
+
+
+.about .read_more {
+
+     margin: 0 auto;
+     display: block;
+     margin-top: 50px;
+     background-color: #ffeb3b; /*transparent*/
+     /* border: #48ca95 solid 2px; */
+     color: black !important;
+     max-width: 232px;
+     padding: 15px 0;
+     border-radius: 30px;
+}
+
+.about .read_more:hover {
+     background: #303f9f;
+     color: #000 !important;
 }
 
 
