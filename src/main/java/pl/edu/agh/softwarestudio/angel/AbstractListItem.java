@@ -1,9 +1,7 @@
 package pl.edu.agh.softwarestudio.angel;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 /**
  * Class representing the item that can be listed within app
@@ -23,7 +21,8 @@ public abstract class AbstractListItem {
      * Id of item
      */
     @Id
-    protected Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected Long id;
 
     /**
      * Function that returns the url to page with details
@@ -67,7 +66,7 @@ public abstract class AbstractListItem {
      * Getter of Id
      * @return Id of item
      */
-    public Integer getId(){
+    public Long  getId(){
         return this.id;
     }
 
@@ -75,7 +74,7 @@ public abstract class AbstractListItem {
      * Setter of Id
      * @param id Id of item
      */
-    public void setId(Integer id){
+    public void setId(Long  id){
         this.id = id;
     }
 }

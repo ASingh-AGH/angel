@@ -20,16 +20,12 @@ import javax.persistence.*;
 @Table(name="HelpOffer")
 public class HelpOffer extends AbstractListItem {
     @Id
-    private Integer id;
+    private Long id;
     @OneToOne
-    @JoinTable(
-            name = "Locations",
-            joinColumns = @JoinColumn(name = "locationId"),
-            inverseJoinColumns = @JoinColumn(name = "id")
-    )
+    @JoinColumn(name = "locationid", referencedColumnName = "id")
     private Location loc;
 
-    private Integer creatorUserId;
+    private Long creatorUserId;
 
     /**
      * Function that returns the url to page with details

@@ -13,11 +13,8 @@ import java.util.List;
 public class HelpOfferREST {
 
 
-    HelpOfferRepo helpOfferRepo;
-
-    {
-        helpOfferRepo = new HelpOfferRepoService().getRepo();
-    }
+    @Autowired
+    HelpOfferRepoService helpOfferRepo;
 
     @GetMapping
     public List<HelpOffer> getPage(
@@ -25,7 +22,7 @@ public class HelpOfferREST {
             @RequestParam(value = "itemsPerPage", defaultValue = "10") int itemsPerPage
     ) {
 
-        return helpOfferRepo.findAll(PageRequest.of(page,itemsPerPage)).getContent();
+        return helpOfferRepo.getRepo().findAll(PageRequest.of(page,itemsPerPage)).getContent();
     }
 
     @PostMapping
@@ -34,11 +31,11 @@ public class HelpOfferREST {
     ){
         //TODO verify if user is signed in
         //helpOffer.setCreatorUserId(<userId>);
-        helpOffer.setId(null);
-        return helpOfferRepo.save(helpOffer);
+//        helpOffer.setId(null);
+        return helpOfferRepo.getRepo().saveAndFlush(helpOffer);
     }
     @GetMapping("/{offerId}")
     public HelpOffer getHelpOfferById(@PathVariable("offerId") Integer offerId){
-        return helpOfferRepo.findById(offerId).get();
+        return helpOfferRepo.getRepo().findById(offerId).get();
     }
 }

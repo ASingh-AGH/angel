@@ -22,11 +22,11 @@ import java.util.List;
 //@EnableAutoConfiguration
 public class AngelApplication implements CommandLineRunner {
 //	public static ApplicationContext ctx;
-	@Autowired
-	private HelpPlaceRepo helpPlaceRepo;
-
-	@Autowired
-	private LocationRepo locationRepo;
+//	@Autowired
+//	private HelpPlaceRepo helpPlaceRepo;
+//
+//	@Autowired
+//	private LocationRepo locationRepo;
 	public static void main(String[] args) {
 		SpringApplication.run(AngelApplication.class, args);
 
@@ -34,11 +34,11 @@ public class AngelApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String ... args){
-		List<HelpPlace> hps = helpPlaceRepo.findAll();
-		hps.forEach(System.out :: println);
-
-		List<Location> loc = locationRepo.findAll();
-		loc.forEach(System.out :: println);
+//		List<HelpPlace> hps = helpPlaceRepo.findAll();
+//		hps.forEach(System.out :: println);
+//
+//		List<Location> loc = locationRepo.findAll();
+//		loc.forEach(System.out :: println);
 	}
 
 	/**

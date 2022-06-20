@@ -23,7 +23,7 @@ CREATE TABLE angel.HelpPlace(
   	description TEXT,
   	locationId INT,
   	accepted BOOL,
-  	CONSTRAINT location_id_fk
+  	CONSTRAINT helpplace_location_id_fk
   	FOREIGN KEY (locationId)
   	REFERENCES angel.Location(id)
   );
@@ -39,3 +39,14 @@ CREATE TABLE angel.Category(
     id SERIAL PRIMARY KEY,
     name TEXT
 );
+
+CREATE TABLE angel.PlaceCategory(
+    placeId INT,
+    catId INT,
+    CONSTRAINT placecategory_place_id_fk
+        FOREIGN KEY (placeId)
+        REFERENCES angel.HelpPlace(id),
+    CONSTRAINT placecategory_category_id_fk
+            FOREIGN KEY (catId)
+            REFERENCES angel.Category(id)
+)

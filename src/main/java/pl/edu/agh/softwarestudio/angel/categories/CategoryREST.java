@@ -14,12 +14,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/category")
 public class CategoryREST {
-
+    @Autowired
     private CategoryRepo categoryRepo;
-
-    {
-        categoryRepo = new CategoryRepoService().getRepo();
-    }
 
     @GetMapping
     public List<Category> getAll(){
