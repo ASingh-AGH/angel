@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.edu.agh.softwarestudio.angel.AbstractListItem;
+import pl.edu.agh.softwarestudio.angel.categories.Category;
 import pl.edu.agh.softwarestudio.angel.location.Location;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Class that represents help offer
@@ -18,12 +19,28 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Table(name="HelpOffer")
-public class HelpOffer extends AbstractListItem {
+public class HelpOffer {
     @Id
+    @SequenceGenerator(name="helpoffer_id_seq",
+            sequenceName="helpoffer_id_seq",
+            allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator="helpoffer_id_seq")
+    @Column(name = "id", updatable=false)
     private Long id;
+    private String name;
+    private String description;
+
     @OneToOne
     @JoinColumn(name = "locationid", referencedColumnName = "id")
     private Location loc;
+    private boolean accepted;
+    @ManyToMany
+    @JoinTable(
+            name = "placecategory",
+            joinColumns = @JoinColumn(name = "placeid"),
+            inverseJoinColumns = @JoinColumn(name = "catid"))
+    private List<Category> categories;
 
     private Long creatorUserId;
 
@@ -32,7 +49,6 @@ public class HelpOffer extends AbstractListItem {
      *
      * @return The url where user should go to see the details
      */
-    @Override
     public String getDetailsUrl() {
         return "/api/offer/"+this.id+"/";
     }
