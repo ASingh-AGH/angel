@@ -1,42 +1,55 @@
 package pl.edu.agh.softwarestudio.angel.offers;
 
-import pl.edu.agh.softwarestudio.angel.AbstractListItem;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import pl.edu.agh.softwarestudio.angel.categories.Category;
 import pl.edu.agh.softwarestudio.angel.location.Location;
+
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Class that represents help offer
  */
-public class HelpOffer extends AbstractListItem {
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name="HelpOffer")
+public class HelpOffer {
+    @Id
+    @SequenceGenerator(name="helpoffer_id_seq",
+            sequenceName="helpoffer_id_seq",
+            allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator="helpoffer_id_seq")
+    @Column(name = "id", updatable=false)
+    private Long id;
+    private String name;
+    private String description;
 
+    @OneToOne
+    @JoinColumn(name = "locationid", referencedColumnName = "id")
     private Location loc;
+    private boolean accepted;
+    @ManyToMany
+    @JoinTable(
+            name = "placecategory",
+            joinColumns = @JoinColumn(name = "placeid"),
+            inverseJoinColumns = @JoinColumn(name = "catid"))
+    private List<Category> categories;
 
-    private Integer creatorUserId;
-
-    public Integer getCreatorUserId() {
-        return creatorUserId;
-    }
-
-    public void setCreatorUserId(Integer creatorUserId) {
-        this.creatorUserId = creatorUserId;
-    }
-
-
-
-    public static HelpOffer createHelpPlace(String name, String desc, int id){
-        var ho = new HelpOffer();
-        ho.id = id;
-        ho.name = name;
-        ho.description = desc;
-        return ho;
-    }
+    private Long creatorUserId;
 
     /**
      * Function that returns the url to page with details
      *
      * @return The url where user should go to see the details
      */
-    @Override
     public String getDetailsUrl() {
-        return "/api/details/offers/"+this.id+"/";
+        return "/api/offer/"+this.id+"/";
     }
 }
