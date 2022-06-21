@@ -1,112 +1,74 @@
 package pl.edu.agh.softwarestudio.angel.location;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.awt.*;
 
 /**
  * Class representing the location in DB
  */
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "location")
 public class Location {
     /**
      * Location id
      */
     @Id
-    private int id;
+    private Integer id;
     /**
      * Geography localisation on the map
      */
-    @Column("geoX")
+    @Column(name = "geox")
     private float geoX;
     /**
      * Geography localisation on the map
      */
-    @Column("geoY")
+    @Column(name = "geoy")
     private float geoY;
     /**
      * Building number
      */
+    @Column(name="building")
     private String building;
     /**
      * Apartment number
      */
-    @Column("apartmentNumber")
+    @Column(name="apartmentnumber")
     private String apartmentNumber;
     /**
      * Street name
      */
+    @Column(name = "street")
     private String street;
     /**
      * City name
      */
+    @Column(name = "city")
     private String city;
     /**
      * Zip code
      */
+    @Column(name = "zip")
     private String zip;
 
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
-
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getBuilding() {
-        return building;
-    }
-
-    public void setBuilding(String building) {
-        this.building = building;
-    }
-
-    public String getApartmentNumber() {
-        return apartmentNumber;
-    }
-
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
-    public float getGeoX() {
-        return geoX;
-    }
-
-    public void setGeoX(float geoX) {
-        this.geoX = geoX;
-    }
-
-    public float getGeoY() {
-        return geoY;
-    }
-
-    public void setGeoY(float gooY) {
-        this.geoY = gooY;
-    }
 }

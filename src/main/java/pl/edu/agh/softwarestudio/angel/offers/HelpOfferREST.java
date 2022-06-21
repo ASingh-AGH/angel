@@ -1,31 +1,41 @@
 package pl.edu.agh.softwarestudio.angel.offers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("/api/offer")
 public class HelpOfferREST {
 
-    @Autowired
-    HelpOfferRepo helpOfferRepo;
 
-    @GetMapping("/api/list/offers")
-    public Flux<HelpOffer> listOffers(
-            @RequestParam(value = "limit", defaultValue = "100") int limit,
-            @RequestParam(value = "offset", defaultValue = "0") int offset
+    @Autowired
+    HelpOfferRepoService helpOfferRepo;
+
+    @GetMapping
+    public List<HelpOffer> getPage(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "itemsPerPage", defaultValue = "10") int itemsPerPage
     ) {
-        return helpOfferRepo.selectOffset(limit,offset);
+
+        return helpOfferRepo.getRepo().findAll(PageRequest.of(page,itemsPerPage)).getContent();
     }
 
-    @PostMapping("/api/create/offer")
-    public Mono<HelpOffer> createNewHelpOffer(
+    @PostMapping
+    public HelpOffer createNewHelpOffer(
             @RequestBody HelpOffer helpOffer
     ){
         //TODO verify if user is signed in
         //helpOffer.setCreatorUserId(<userId>);
-        helpOffer.setId(null);
-        return helpOfferRepo.save(helpOffer);
+//        helpOffer.setId(null);
+        return helpOfferRepo.getRepo().saveAndFlush(helpOffer);
+    }
+    @GetMapping("/{offerId}")
+    public HelpOffer getHelpOfferById(@PathVariable("offerId") Integer offerId){
+        return helpOfferRepo.getRepo().findById(offerId).get();
     }
 }

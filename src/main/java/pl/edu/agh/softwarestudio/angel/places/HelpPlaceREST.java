@@ -1,49 +1,46 @@
 package pl.edu.agh.softwarestudio.angel.places;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.agh.softwarestudio.angel.location.Location;
+import pl.edu.agh.softwarestudio.angel.categories.Category;
 import pl.edu.agh.softwarestudio.angel.location.LocationRepo;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import pl.edu.agh.softwarestudio.angel.location.LocationRepoService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/places")
 public class HelpPlaceREST {
-    @Autowired
-    HelpPlaceRepo helpPlaceRepo;
-    @Autowired
-    LocationRepo locationRepo;
 
-    /**
-     * GET Request /api/list/places/ showing places from database with offset from the
-     * @param limit limit of displayed elements
-     * @param offset offset of data
-     * @return
-     */
-    @GetMapping("list")
-    public Flux<HelpPlace> listPlaces(
-            @RequestParam(value = "limit", defaultValue = "100") int limit,
-            @RequestParam(value = "offset", defaultValue = "0") int offset
-    ) { //TODO exception on not int
-        return helpPlaceRepo.selectOffset(limit, offset);
+    @Autowired
+    HelpPlaceRepoService helpPlaceRepoService;
+    @Autowired
+    LocationRepoService locationRepoService;
+
+
+    @GetMapping
+    public List<HelpPlace> getPage(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "itemsPerPage", defaultValue = "10") int itemsPerPage
+    )  { //TODO exception on not int
+        return helpPlaceRepoService.getRepo().findAll(PageRequest.of(page, itemsPerPage)).getContent();
     }
 
-    @GetMapping("all")
-    public Flux<HelpPlace> listPlacesAll() {
-        return helpPlaceRepo.findAll();
-    }
 
-    @PostMapping("newHelpPlace")
-    public Mono<HelpPlace> reportNewHelpPlace(
+    @PostMapping
+    public HelpPlace reportNewHelpPlace(
             @RequestBody HelpPlace place
     ){
         //TODO Security checks, if user authenticated
         place.setAccepted(false);
-        place.setId(null);
-        Mono<Location> newLocation = locationRepo.save(place.getLoc());
-        place.setLocationId(newLocation.block().getId());
-        place.setLoc(null);
-        return helpPlaceRepo.save(place);
+        return helpPlaceRepoService.getRepo().saveAndFlush(place);
+    }
+
+    @GetMapping("/{placeId}")
+    public HelpPlace getPlaceById(@PathVariable("placeId") Integer placeId){
+//        System.out.println(helpPlaceRepoService.getRepo().findById(placeId)+" ################################" + placeId);
+        return helpPlaceRepoService.getRepo().findById(placeId).get();
     }
 }
