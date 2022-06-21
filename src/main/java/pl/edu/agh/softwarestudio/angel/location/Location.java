@@ -23,11 +23,11 @@ public class Location {
      * Location id
      */
     @Id
-    @SequenceGenerator(name="helpplace_id_seq",
-            sequenceName="helpplace_id_seq",
+    @SequenceGenerator(name="location_id_seq",
+            sequenceName="location_id_seq",
             allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator="helpplace_id_seq")
+            generator="location_id_seq")
     @Column(name = "id", updatable=false)
     private Integer id;
     /**

@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="HelpOffer")
+@Table(name="helpoffer")
 public class HelpOffer {
     @Id
     @SequenceGenerator(name="helpoffer_id_seq",
@@ -42,7 +42,7 @@ public class HelpOffer {
             inverseJoinColumns = @JoinColumn(name = "catid"))
     private List<Category> categories;
 
-    private Long creatorUserId;
+//    private Long creatorUserId;
 
     /**
      * Function that returns the url to page with details

@@ -115,7 +115,11 @@
 					 ?>
 					 
 					 </p>
-                     <a class="read_more" href="Message Page.html">Send Message</a>
+                     <div>
+						<?php foreach($resp->categories as $cat){ ?>
+						<span class="badge rounded-pill bg-info text-dark"><?php echo $cat->name; ?></span>
+						<?php } ?>
+					 </div>
                   </div>
                </div>
                
