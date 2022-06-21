@@ -23,6 +23,7 @@ CREATE TABLE angel.HelpPlace(
   	description TEXT,
   	locationId INT,
   	accepted BOOL,
+  	openhours TEXT,
   	CONSTRAINT helpplace_location_id_fk
   	FOREIGN KEY (locationId)
   	REFERENCES angel.Location(id)
@@ -46,6 +47,12 @@ CREATE TABLE angel.Users(
     email TEXT
 );
 
+CREATE TABLE angel.Images(
+    id SERIAL PRIMARY KEY,
+    src TEXT,
+    alt TEXT
+);
+
 CREATE TABLE angel.Category(
     id SERIAL PRIMARY KEY,
     name TEXT
@@ -58,8 +65,8 @@ CREATE TABLE angel.PlaceCategory(
         FOREIGN KEY (placeId)
         REFERENCES angel.HelpPlace(id),
     CONSTRAINT placecategory_category_id_fk
-            FOREIGN KEY (catId)
-            REFERENCES angel.Category(id)
+        FOREIGN KEY (catId)
+        REFERENCES angel.Category(id)
 );
 
 CREATE TABLE angel.OfferCategory(
@@ -71,4 +78,16 @@ CREATE TABLE angel.OfferCategory(
     CONSTRAINT offercategory_category_id_fk
             FOREIGN KEY (catId)
             REFERENCES angel.Category(id)
+);
+
+CREATE TABLE angel.HelpPlaceImages(
+    id SERIAL PRIMARY KEY,
+    imageId INT,
+    helpPlaceId INT,
+    CONSTRAINT helpplaceimages_image_id_fk
+        FOREIGN KEY (imageId)
+        REFERENCES angel.Images(id),
+     CONSTRAINT helpplaceimages_place_id_fk
+        FOREIGN KEY (helpPlaceId)
+        REFERENCES angel.HelpPlace(id)
 );

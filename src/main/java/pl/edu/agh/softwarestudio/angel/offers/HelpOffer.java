@@ -27,7 +27,7 @@ public class HelpOffer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator="helpoffer_id_seq")
     @Column(name = "id", updatable=false)
-    private Long id;
+    private Integer id;
     private String name;
     private String description;
 

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.edu.agh.softwarestudio.angel.categories.Category;
 import pl.edu.agh.softwarestudio.angel.location.Location;
+import pl.edu.agh.softwarestudio.angel.utils.Image;
 
 
 import javax.persistence.*;
@@ -31,20 +32,29 @@ public class HelpPlace {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator="helpplace_id_seq")
     @Column(name = "id", updatable=false)
-    private Long id;
+    private Integer id;
     private String name;
     private String description;
+    @Column(name = "openhours")
+    private String openHours;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "locationid", referencedColumnName = "id")
     private Location loc;
     private boolean accepted;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name = "placecategory",
             joinColumns = @JoinColumn(name = "placeid"),
             inverseJoinColumns = @JoinColumn(name = "catid"))
     private List<Category> categories;
+
+    @ManyToMany(cascade=CascadeType.ALL) //cascade=CascadeType.ALL allows insertion by single json object
+    @JoinTable(
+            name = "helpplaceimages",
+            joinColumns = @JoinColumn(name = "helpplaceid"),
+            inverseJoinColumns = @JoinColumn(name = "imageid"))
+    private List<Image> imgs;
 
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;

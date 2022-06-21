@@ -364,7 +364,7 @@ ul.btn li:last-child {
 .header {
      width: 100%;
      padding: 30px 30px;
-     background: transparent;
+     background: #4843a3;
      position: absolute;
      z-index: 999;
 }
@@ -381,7 +381,7 @@ ul.btn li:last-child {
 /** banner section **/
 
 .banner_main {
-     background: url(../images/banner.jpg);
+     /* background: url(../images/banner.jpg); */
      background-repeat: no-repeat;
      min-height: 150px; /*original 900, banner 955*/
      background-size: 100% 100%;
@@ -416,7 +416,7 @@ ul.btn li:last-child {
 }
 
 .text-bg h1 {
-     color: #fff;
+     color:#090807;
      font-size: 81px;
      line-height: 80px;
      padding-bottom: 45px;
@@ -424,7 +424,7 @@ ul.btn li:last-child {
 }
 
 .text-bg span {
-     color: #fff;
+     color:#090807;
      font-size: 42px;
      line-height: 50px;
      font-weight: normal;
@@ -433,6 +433,7 @@ ul.btn li:last-child {
 }
 
 .text-bg p {
+     color:#222222;
      line-height: 28px;
      font-weight: 500;
      padding-bottom: 60px;
@@ -453,7 +454,8 @@ ul.btn li:last-child {
 }
 
 .text_img figure img {
-     width: 100%;
+     width:600px ;
+     /* width: 100%; */
 }
 
 .carousel-caption {
@@ -473,7 +475,7 @@ ul.btn li:last-child {
      width: 20px;
      height: 20px;
      border-radius: 20px;
-     background: #48ca95;
+     background: #ffeb3b;
      margin-right: 5px;
      margin-left: 5px;
 }
@@ -490,8 +492,8 @@ ul.btn li:last-child {
 .text-bg a {
      font-size: 17px;
      background-color: transparent;
-     border: #fff solid 2px;
-     color: #fff;
+     border: #090807 solid 2px;
+     color:#090807;
      font-weight: 500;
      padding: 14px 0px;
      width: 100%;
@@ -503,7 +505,8 @@ ul.btn li:last-child {
 }
 
 .text-bg a:hover {
-     background-color: #48ca95;
+     background-color: #ffeb3b;
+     border: #ffeb3b solid 2px;
      color: #fff;
      transition: ease-in all 0.5s;
 }
@@ -515,6 +518,25 @@ ul.btn li:last-child {
      text-align: center;
      padding-bottom: 60px;
 }
+
+
+
+.titlepage h1 {
+     font-size: 40px;
+     color: #090807;
+     line-height: 55px;
+     font-weight: bold;
+     padding: 0;
+     /* text-transform: uppercase; */
+     border-bottom: #757575 solid 2px;
+     max-width: 315px;
+     /* margin: auto; */
+     text-align:start 
+
+
+     
+}
+
 
 .titlepage h2 {
      font-size: 40px;
@@ -546,6 +568,47 @@ ul.btn li:last-child {
     text-align: justify
 }
 
+
+.postingdate h5 { 
+     /* 
+     
+     <div class="postingdate">
+                              <h5>Date Created</h5>
+                              </div>\                         
+                              */
+     
+     font-size: 15px;
+     color:#222222;
+     /* line-height: 55px; */
+     /* font-weight: bold; */
+     padding: 0;
+     /* text-transform: uppercase; */
+     /* border-bottom: #ffeb3b solid 2px; */
+     max-width: 50%;
+     /* margin: auto; */
+     text-align: left;
+ }
+
+ .postingdate h6 { 
+     /* 
+     
+     <div class="postingdate">
+                              <h5>Date Created</h5>
+                              </div>\                         
+                              */
+     
+     font-size: 10px;
+     color:#222222;
+     /* line-height: 55px; */
+     /* font-weight: bold; */
+     padding: 0;
+     /* text-transform: uppercase; */
+     /* border-bottom: #ffeb3b solid 2px; */
+     max-width: 50%;
+     /* margin: auto; */
+     text-align: left;
+ }
+
 .d_flex {
      display: flex;
      align-items: center;
@@ -558,7 +621,7 @@ ul.btn li:last-child {
 
 .read_more {
      font-size: 17px;
-     background-color: #48ca95;
+     background-color: #ffeb3b;
      color: #fff !important;
      padding: 13px 0px;
      width: 100%;
@@ -697,7 +760,7 @@ ul.social_icon li a {
 }
 
 ul.social_icon li a:hover {
-     background-color: #48ca95;
+     background-color: #ffeb3b;
      color: #fff;
 }
 
@@ -748,7 +811,7 @@ ul.social_icon li a:hover {
 .sub_btn {
      font-size: 17px;
      transition: ease-in all 0.5s;
-     background-color: #48ca95;
+     background-color: #ffeb3b;
      color: #fff;
      padding: 10px 0px;
      max-width: 147px;
@@ -785,7 +848,7 @@ ul.social_icon li a:hover {
 }
 
 .copyright a:hover {
-     color: #48ca95;
+     color: #ffeb3b;
 }
 
 
@@ -794,10 +857,6 @@ ul.social_icon li a:hover {
 
 /** inner page css **/
 
-.inner_posituong .header {
-     position: inherit;
-     background: #4843a3;
-}
 
 .computer_page .laptop {
      margin-top: 90px;
@@ -824,6 +883,12 @@ ul.social_icon li a:hover {
      border: inherit;
 }
 
+
+.about .titlepage time {
+     padding: 30px 0;
+}
+
+
 .about .titlepage p {
      padding: 30px 0;
 }
@@ -834,6 +899,25 @@ ul.social_icon li a:hover {
 
 .about_img figure img {
      width: 100%;
+}
+
+
+.about .read_more {
+
+     margin: 0 auto;
+     display: block;
+     margin-top: 50px;
+     background-color: #ffeb3b; /*transparent*/
+     /* border: #48ca95 solid 2px; */
+     color: black !important;
+     max-width: 232px;
+     padding: 15px 0;
+     border-radius: 30px;
+}
+
+.about .read_more:hover {
+     background: #303f9f;
+     color: #000 !important;
 }
 
 

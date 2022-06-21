@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.awt.*;
 
 /**
@@ -26,6 +23,12 @@ public class Location {
      * Location id
      */
     @Id
+    @SequenceGenerator(name="helpplace_id_seq",
+            sequenceName="helpplace_id_seq",
+            allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator="helpplace_id_seq")
+    @Column(name = "id", updatable=false)
     private Integer id;
     /**
      * Geography localisation on the map

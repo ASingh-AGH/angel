@@ -1,5 +1,4 @@
-package pl.edu.agh.softwarestudio.angel.categories;
-
+package pl.edu.agh.softwarestudio.angel.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,10 +12,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "Category")
-public class Category {
+@Table(name = "images")
+public class Image {
     @Id
-//    @GeneratedValue(strategy= GenerationType.AUTO)
     @SequenceGenerator(name="helpplace_id_seq",
             sequenceName="helpplace_id_seq",
             allocationSize=1)
@@ -24,5 +22,8 @@ public class Category {
             generator="helpplace_id_seq")
     @Column(name = "id", updatable=false)
     private Integer id;
-    private String name;
+    @Column(name="src")
+    private String src;
+    @Column(name = "alt")
+    private String alt;
 }

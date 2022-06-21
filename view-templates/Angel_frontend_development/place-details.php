@@ -31,7 +31,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
-   <!-- body -->
    <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
@@ -61,9 +60,11 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item active">
-                                 <a class="nav-link" href="index.html">Home</a>
+                                 <a class="nav-link" href="index.php">Home</a>
                               </li>
-
+                              <li class="nav-item">
+                                 <a class="nav-link" href="about.html">About</a>
+                              </li>
                               <li class="nav-item">
                                  <a class="nav-link">Contact</a>
                               </li>
@@ -76,7 +77,7 @@
                                  <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                               </li>
                               <li class="nav-item d_none">
-                                 <a class="nav-link" href="#">Login</a>
+                                 <a class="nav-link" href="login.html">Login</a>
                               </li>
                            </ul>
                         </div>
@@ -93,125 +94,125 @@
          
       </section>
       <!-- end banner -->
+      <!-- about section -->
+      <div class="about">
+         <div class="container">
+            <div class="row d_flex">
+               <div class="col-md-5">
+				  <?php include_once("phplib.php"); $resp = getPlaceDetails($_GET['id']);?>
+                  <div class="titlepage">
+                     <h2><?php echo $resp->name; ?></h2>
+                     <time>11/06/2022 10:30 am</time>
+                     <p>Description: <?php echo $resp->description; ?></p>
+                     <p>
+					 Location: 
+					 <?php 
+					 echo $resp->loc->street." ".$resp->loc->building." ";
+					 if(isset($resp->loc->apartmentNumber) && $resp->loc->apartmentNumber != ""){
+					    echo " / ".$resp->loc->apartmentNumber;
+					 }
+					 echo ", ".$resp->loc->city." ".$resp->loc->zip;
+					 ?>
+					 
+					 </p>
+                     <a class="read_more" href="Message Page.html">Send Message</a>
+                  </div>
+               </div>
+               
+
+
+               <div id="banner1" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+					 <?php 
+						$i = 0;
+						foreach($resp->imgs as $img){
+							echo '<li data-target="#banner1" data-slide-to="'.$i++.'" '.($i===0 ? 'class="active"' : '').'></li>';
+						}
+					 ?>
+                  </ol>
+                  <div class="carousel-inner">
+					 <?php 
+						$i=0;
+						foreach($resp->imgs as $img){?>
+                     <div class="carousel-item <?php if($i++===0) echo "active";?>">
+                        <div class="container">
+                           <div class="carousel-caption">
+                              <div class="row"><div class="text_img">
+                                    <figure><img src="<?php echo $img->src; ?>" alt="<?php echo $img->alt; ?>"/></figure>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+						<?php } ?>
+                     
+                    
+                     
+                  <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+                  <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                  </a>
+                  <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                  </a>
+               </div>
+
+
+
+
+
+
+
+
+            </div>
+         </div>
+		 <div class="row d_flex mt-3">
+			<div class="col-12">
+				<center>
+					<iframe 
+					  width="100%" 
+					  height="500" 
+					  frameborder="0" 
+					  scrolling="no" 
+					  marginheight="0" 
+					  marginwidth="0" 
+					  src="https://maps.google.com/maps?q=<?php echo $resp->loc->geoY; ?>,<?php echo $resp->loc->geoX; ?>&hl=pl&z=14&amp;output=embed">
+					</iframe>
+				</center>
+			</div>
+		 </div>	
+      </div>
+      <!-- end about section -->
      
-      <!-- categories -->
-      <div  class="category">
+
+<!--  footer -->
+<footer>
+   <div class="footer">
+      <div class="container">
+         <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+               <img class="logo1" src="images/angel_logo_white.png" alt="#"/>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+               <h3>Team members</h3>
+               <ul class="about_us">
+                  <li> Jakub Skrzyński <br> Piotr Mastalerz <br> Ali Awada <br> Apoorva Singh </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="copyright">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Browse Categories</h2>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-
-
-
-               
-               <div class="col-md-12">
-                  <div class="our_category">
-
-                     <div class="row">
-
-                        <div class="col-12">
-                           
-                        </div>
-                        
-                        
-                     </div>
-
-                     <div class="titlepage">
-                        <h3>Housing</h3>
-                     </div>
-
-                     <div class="row">
-
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="item_box">
-                              <figure><img src="images/category2item1.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="item_box">
-                              <figure><img src="images/category2item2.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="item_box">
-                              <figure><img src="images/category2item3.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-
-                     </div>
-
-                     <div class="titlepage">
-                        <h3>Medical</h3>
-                     </div>
-
-                     <div class="row">
-
-
-                        <div class="col-md-4">
-                           <div class="item_box">
-                              <figure><img src="images/category3item1.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="item_box">
-                              <figure><img src="images/category3item2.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="item_box">
-                              <figure><img src="images/category3item3.jpg" alt="#"/></figure>
-                           </div>
-                        </div>
-                        <div class="col-md-12">
-                           <a class="read_more" href="#">See More</a>
-                        </div>
-                     </div>
-                  </div>
+                  <p>Software Studio Angle Frontend Template Sample V1 Winter 2022</p>
                </div>
             </div>
          </div>
       </div>
-      <!-- end categories -->
-
-
-      <!--  footer -->
-      <footer>
-         <div class="footer">
-            <div class="container">
-               <div class="row">
-                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                     <img class="logo1" src="images/angel_logo_white.png" alt="#"/>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                     <h3>Team members</h3>
-                     <ul class="about_us">
-                        <li> Jakub Skrzyński <br> Piotr Mastalerz <br> Ali Awada <br> Apoorva Singh </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <p>Software Studio Angle Frontend Template Sample V1 Winter 2022</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </footer>
-      <!-- end footer -->
+   </div>
+</footer>
+<!-- end footer -->
+      
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
@@ -220,18 +221,6 @@
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-	  
-	  <script>
-		var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
-
-fetch("http://localhost:8080/api/places", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-	  </script>
    </body>
 </html>
 

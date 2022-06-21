@@ -1,4 +1,7 @@
 
+<!--hi can you see this comment????-->
+<!--duh?-->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,88 +101,55 @@
       <div  class="category">
          <div class="container">
             <div class="row">
-               <div class="col-md-12">
+               <div class="col-md-3 ">
                   <div class="titlepage">
-                     <h2>Browse Categories</h2>
+                     <h1> Clothing and Food</h1>
                   </div>
                </div>
             </div>
+            
             <div class="row">
-
-
-
-               
                <div class="col-md-12">
-                  <div class="our_category">
-
-                     <div class="row">
-
-                        <div class="col-12">
+                     <div class="our_category">
+   
+                        <div class="titlepage">
+                           <h3>Ukranian fashion brands</h3>
+                        </div>
+   
+   
+   
+   
+               <div class="col-md-4">
+                              <div class="item_box">
+                                 <figure><img src="images/Food1.jpg" alt="#"/></figure>
+                                 
+                              </div>
                            
-                        </div>
-                        
-                        
-                     </div>
-
-                     <div class="titlepage">
-                        <h3>Housing</h3>
-                     </div>
-
-                     <div class="row">
-
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="item_box">
-                              <figure><img src="images/category2item1.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="item_box">
-                              <figure><img src="images/category2item2.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="item_box">
-                              <figure><img src="images/category2item3.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-
-                     </div>
-
-                     <div class="titlepage">
-                        <h3>Medical</h3>
-                     </div>
-
-                     <div class="row">
-
-
-                        <div class="col-md-4">
-                           <div class="item_box">
-                              <figure><img src="images/category3item1.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="item_box">
-                              <figure><img src="images/category3item2.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="item_box">
-                              <figure><img src="images/category3item3.jpg" alt="#"/></figure>
-                           </div>
-                        </div>
-                        <div class="col-md-12">
-                           <a class="read_more" href="#">See More</a>
-                        </div>
-                     </div>
-                  </div>
+               </div> 
+                           
+                           Published on 01/02/2022
+               <div class="col-md-4">
+                              <div class="item_box">
+                                 <figure><img src="images/Food2.jpg" alt="#"/></figure>
+                                 
+                              </div>
                </div>
+                           Published on 01/02/2022
+               <div class="col-md-4">
+                              <div class="item_box">
+                                 <figure><img src="images/Food3.jpg" alt="#"/></figure>
+                              </div>
+                           </div>
+                           Published on 01/02/2022
+                           <div class="col-md-12">
+                              <a class="read_more" href="#">See More</a>
+                           </div>
+                        </div>
+                     </div>
             </div>
+
          </div>
+      </div>
       </div>
       <!-- end categories -->
 
@@ -220,18 +190,6 @@
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-	  
-	  <script>
-		var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
-
-fetch("http://localhost:8080/api/places", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-	  </script>
    </body>
 </html>
 

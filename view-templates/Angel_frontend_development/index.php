@@ -122,59 +122,66 @@
                      </div>
 
                      <div class="titlepage">
-                        <h3>Housing</h3>
+                        <h3>Help Places</h3>
                      </div>
+					
+					<?php 
+						include_once("phplib.php"); 
+						$resp = getPlaces();
+						foreach($resp as $el){
+											?>
+							<div class="row">
+						
+								<div class="col-12 m-4 border-bottom pb-3">
+								   <div class="">
+									  <h3><?php echo $el->name; ?></h3>
+									  <p><?php echo $el->description; ?></p>
+									  <a href="place-details.php?id=<?php echo $el->id;?>" class="btn btn-primary">See details</a>
+								   </div>
+								</div>
 
-                     <div class="row">
+							</div>
 
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="item_box">
-                              <figure><img src="images/category2item1.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="item_box">
-                              <figure><img src="images/category2item2.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="item_box">
-                              <figure><img src="images/category2item3.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-
-                     </div>
-
+                        
+						<?php }?>
+					
+                     
                      <div class="titlepage">
-                        <h3>Medical</h3>
+                        <h3>Help Offers</h3>
                      </div>
 
+					
                      <div class="row">
+						<?php 
+												$curl = curl_init();
 
+						curl_setopt_array($curl, array(
+						  CURLOPT_URL => 'http://localhost:8080/api/places',
+						  CURLOPT_RETURNTRANSFER => true,
+						  CURLOPT_ENCODING => '',
+						  CURLOPT_MAXREDIRS => 10,
+						  CURLOPT_TIMEOUT => 0,
+						  CURLOPT_FOLLOWLOCATION => true,
+						  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+						  CURLOPT_CUSTOMREQUEST => 'GET',
+						));
 
-                        <div class="col-md-4">
-                           <div class="item_box">
-                              <figure><img src="images/category3item1.jpg" alt="#"/></figure>
-                              
+						$response = curl_exec($curl);
+
+						curl_close($curl);
+						$resp = json_decode($response);
+						foreach($resp as $el){
+											?>
+                        <div class="col-md-4 margin_bottom1">
+                           <div class="">
+                              <h3><?php echo $el->name; ?></h3>
+							  <p><?php echo $el->description; ?></p>
+                              <a href="details-offers.php?id=<?php echo $el->id;?>" class="btn btn-primary">Primary1</a>
                            </div>
                         </div>
-                        <div class="col-md-4">
-                           <div class="item_box">
-                              <figure><img src="images/category3item2.jpg" alt="#"/></figure>
-                              
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="item_box">
-                              <figure><img src="images/category3item3.jpg" alt="#"/></figure>
-                           </div>
-                        </div>
-                        <div class="col-md-12">
-                           <a class="read_more" href="#">See More</a>
-                        </div>
+						<?php }?>
+                        
+
                      </div>
                   </div>
                </div>
@@ -221,17 +228,6 @@
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
 	  
-	  <script>
-		var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
-
-fetch("http://localhost:8080/api/places", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-	  </script>
+	  
    </body>
 </html>
-
