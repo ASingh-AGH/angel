@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import pl.edu.agh.softwarestudio.angel.location.Location;
 import pl.edu.agh.softwarestudio.angel.location.LocationRepo;
 import pl.edu.agh.softwarestudio.angel.places.HelpPlace;
@@ -44,14 +45,14 @@ public class AngelApplication implements CommandLineRunner {
 	/**
 	 * 	Function used to set native security configuration
 	 */
-	@Bean
-	SecurityFilterChain web(HttpSecurity http) throws Exception {
-		http
-				.authorizeHttpRequests(authorize -> authorize
-						.mvcMatchers("/api/**").permitAll()
-				)
-				.csrf().disable();
-
-		return http.build();
-	}
+//	@Bean
+//	SecurityFilterChain web(HttpSecurity http) throws Exception {
+//		http
+//				.authorizeHttpRequests(authorize -> authorize
+//						.mvcMatchers("/api/**").permitAll()
+//				)
+//				.csrf().disable();
+//
+//		return http.build();
+//	}
 }

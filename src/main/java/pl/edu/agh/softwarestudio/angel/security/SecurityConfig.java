@@ -12,6 +12,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -53,13 +54,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
+                .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/v2/api-docs").permitAll()
+                .antMatchers("/webjars/**").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/places").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/offer").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/category").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/places/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/offer/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/category/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/register").permitAll()
                 .anyRequest().authenticated()
+                .and()
+                .formLogin().permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()

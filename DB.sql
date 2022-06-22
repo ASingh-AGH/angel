@@ -43,7 +43,8 @@ CREATE TABLE angel.HelpOffer(
 CREATE TABLE angel.Users(
     id SERIAL PRIMARY KEY,
     username TEXT,
-    passHash TEXT,
+    password TEXT,
+    role TEXT,
     email TEXT
 );
 
