@@ -45,7 +45,8 @@ CREATE TABLE angel.Users(
     username TEXT,
     password TEXT,
     role TEXT,
-    email TEXT
+    email TEXT,
+    fullname TEXT
 );
 
 CREATE TABLE angel.Images(

@@ -19,7 +19,7 @@ public class UserREST {
     public User register(
             @RequestBody User user
     ) throws Exception {
-        if(userRepo.countByUsername(user.getUsername()) == 0 || userRepo.countByEmail(user.getEmail()) == 0) {
+        if(userRepo.countByUsername(user.getUsername()) == 0 && userRepo.countByEmail(user.getEmail()) == 0) {
             user.setPassword(enc.encode(user.getPassword()));
             user.setRole("USER");
             return userRepo.save(user);
