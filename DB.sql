@@ -91,3 +91,15 @@ CREATE TABLE angel.HelpPlaceImages(
         FOREIGN KEY (helpPlaceId)
         REFERENCES angel.HelpPlace(id)
 );
+
+CREATE TABLE angel.HelpOfferImages(
+    id SERIAL PRIMARY KEY,
+    imageId INT,
+    helpOfferId INT,
+    CONSTRAINT helpofferimages_image_id_fk
+        FOREIGN KEY (imageId)
+        REFERENCES angel.Images(id),
+     CONSTRAINT helpofferimages_offer_id_fk
+        FOREIGN KEY (helpOfferId)
+        REFERENCES angel.HelpOffer(id)
+);

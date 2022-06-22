@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.edu.agh.softwarestudio.angel.categories.Category;
 import pl.edu.agh.softwarestudio.angel.location.Location;
+import pl.edu.agh.softwarestudio.angel.utils.Image;
 
 import javax.persistence.*;
 import java.util.List;
@@ -35,12 +36,22 @@ public class HelpOffer {
     @JoinColumn(name = "locationid", referencedColumnName = "id")
     private Location loc;
     private boolean accepted;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
-            name = "placecategory",
-            joinColumns = @JoinColumn(name = "placeid"),
+            name = "offercategory",
+            joinColumns = @JoinColumn(name = "offerId"),
             inverseJoinColumns = @JoinColumn(name = "catid"))
     private List<Category> categories;
+
+    @ManyToMany(cascade=CascadeType.ALL) //cascade=CascadeType.ALL allows insertion by single json object
+    @JoinTable(
+            name = "helpofferimages",
+            joinColumns = @JoinColumn(name = "helpplaceid"),
+            inverseJoinColumns = @JoinColumn(name = "imageid"))
+    private List<Image> imgs;
+
+
+
 
 //    private Long creatorUserId;
 
