@@ -1,4 +1,5 @@
 <?php ob_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -30,7 +31,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
-   <!-- body -->
    <body class="main-layout">
       <!-- loader  -->
       <div class="loader_bg">
@@ -60,7 +60,7 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item active">
-                                 <a class="nav-link" href="index.html">Home</a>
+                                 <a class="nav-link" href="index.php">Home</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="about.html">About</a>
@@ -94,87 +94,78 @@
          
       </section>
       <!-- end banner -->
-      <!--  contact -->
-      <div class="contact">
+      <!-- about section -->
+      <div class="about">
+         <div class="container">
+            <div class="row d_flex">
+               <div class="col-12">
+				  
+                  <div class="titlepage">
+				  <?php include_once("phplib.php");
+					if(isset($_POST['username'])){
+						if(auth($_POST['username'],$_POST['password']))
+							header("Location: index.php");
+							
+						else{
+							echo echo '<div class="alert alert-danger" role="alert">Bad credentials!</div>';;
+						}
+						ob_flush();
+					}?>
+                     <h2>Add help offer</h2>
+					 <form method="POST">
+						<div class="mb-3">
+							<label class="form-label">Name</label>
+							<input type="text" name="title" class="form-control">
+						</div>
+						
+						<div class="mb-3">
+							<label class="form-label">Description</label>
+							<textarea type="text" name="desc" class="form-control"></textarea>
+						</div>
+
+						<button type="submit" class="btn btn-primary">Submit</button>
+					 </form>
+                  </div>
+               </div>
+               
+
+
+               
+         </div>
+		 	
+      </div>
+      <!-- end about section -->
+     
+
+<!--  footer -->
+<footer>
+   <div class="footer">
+      <div class="container">
+         <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+               <img class="logo1" src="images/angel_logo_white.png" alt="#"/>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+               <h3>Team members</h3>
+               <ul class="about_us">
+                  <li> Jakub Skrzyński <br> Piotr Mastalerz <br> Ali Awada <br> Apoorva Singh </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="copyright">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Register</h2>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-10 offset-md-1">
-					<?php
-						include_once("phplib.php");
-						if(isset($_POST['username'])){
-							
-							if(register($_POST['username'],$_POST['password'],$_POST['email'],$_POST['fullname'])){
-								header("Location: index.php");
-								ob_flush();
-							}
-							else{
-								echo '<div class="alert alert-danger" role="alert">Invalid data!</div>';
-							}
-						}
-						ob_flush();
-
-
-					?>
-					
-                  <form id="request" class="main_form" method="POST">
-                     <div class="row">
-                        <div class="col-md-12" style="position:relative; top: -30px">
-                           <center><span style="font-size: large"><input class="contactus" placeholder="Email" type="type" name="email"> 
-                        </div>
-						<div class="col-md-12" style="position:relative; top: -30px">
-                           <center><span style="font-size: large"><input class="contactus" placeholder="Username" type="type" name="username"> 
-                        </div>
-                        <div class="col-md-12" style="position:relative; top: -25px">
-                           <center><span style="font-size: large"><input class="contactus" placeholder="Full Name" type="type" name="fullname"> 
-                        </div>
-                        <div class="col-md-12" style="position:relative; top: -20px">
-                           <center><span style="font-size: large"><input class="contactus" placeholder="Password" type="password" name="password">                          
-                        </div>
-                        <div class="col-md-12" style="position:relative; top: -10px">
-                           <center><button class="sub_btn">Register</button>
-                        </div>
-                     </div>
-                  </form>
+                  <p>Software Studio Angle Frontend Template Sample V1 Winter 2022</p>
                </div>
             </div>
          </div>
       </div>
-      <!-- end contact -->
-      <!--  footer -->
-      <footer>
-         <div class="footer">
-            <div class="container">
-               <div class="row">
-                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                     <img class="logo1" src="images/angel_logo_white.png" alt="#"/>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                     <h3>Team members</h3>
-                     <ul class="about_us">
-                        <li> Jakub Skrzyński <br> Piotr Mastalerz <br> Ali Awada <br> Apoorva Singh </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <p>Software Studio Angle Frontend Template Sample V1 Winter 2022</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </footer>
-      <!-- end footer -->
+   </div>
+</footer>
+<!-- end footer -->
+      
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>

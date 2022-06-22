@@ -32,21 +32,22 @@ public class HelpOffer {
     private String name;
     private String description;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "locationid", referencedColumnName = "id")
     private Location loc;
+    @Transient
     private boolean accepted;
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name = "offercategory",
-            joinColumns = @JoinColumn(name = "offerId"),
+            joinColumns = @JoinColumn(name = "offerid"),
             inverseJoinColumns = @JoinColumn(name = "catid"))
     private List<Category> categories;
 
     @ManyToMany(cascade=CascadeType.ALL) //cascade=CascadeType.ALL allows insertion by single json object
     @JoinTable(
             name = "helpofferimages",
-            joinColumns = @JoinColumn(name = "helpplaceid"),
+            joinColumns = @JoinColumn(name = "helpofferid"),
             inverseJoinColumns = @JoinColumn(name = "imageid"))
     private List<Image> imgs;
 

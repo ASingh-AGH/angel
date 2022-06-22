@@ -45,6 +45,27 @@ function getPlaceDetails($id){
 	return json_decode($response);
 }
 
+function getOfferDetails($id){
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => BASE_URL.'/api/offer/'.$id,
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => '',
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 0,
+	  CURLOPT_FOLLOWLOCATION => true,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => 'GET',
+	));
+
+	$response = curl_exec($curl);
+
+	curl_close($curl);
+	
+	return json_decode($response);
+}
+
 function getPlaces($page = 0, $perPage = 10){
 	$curl = curl_init();
 
@@ -65,6 +86,30 @@ function getPlaces($page = 0, $perPage = 10){
 	curl_close($curl);
 	return json_decode($response);
 }
+
+
+function getOffers($page = 0, $perPage = 10){
+	$curl = curl_init();
+
+	if(isset($page))
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => BASE_URL.'/api/offer?page='.$page.'&itemsPerPage='.$perPage,
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => '',
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 0,
+	  CURLOPT_FOLLOWLOCATION => true,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => 'GET',
+	));
+
+	$response = curl_exec($curl);
+
+	curl_close($curl);
+	return json_decode($response);
+}
+
+
 
 function auth($user="",$pass=""){
 	session_start();
@@ -146,4 +191,12 @@ function register($user, $pass, $email, $fullname){
 		return true;
 	}
 	return false;
+}
+
+
+
+function createHelpOffer(){
+	
+	
+	
 }

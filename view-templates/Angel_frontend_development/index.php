@@ -151,38 +151,25 @@
                      </div>
 
 					
-                     <div class="row">
-						<?php 
-												$curl = curl_init();
-
-						curl_setopt_array($curl, array(
-						  CURLOPT_URL => 'http://localhost:8080/api/places',
-						  CURLOPT_RETURNTRANSFER => true,
-						  CURLOPT_ENCODING => '',
-						  CURLOPT_MAXREDIRS => 10,
-						  CURLOPT_TIMEOUT => 0,
-						  CURLOPT_FOLLOWLOCATION => true,
-						  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-						  CURLOPT_CUSTOMREQUEST => 'GET',
-						));
-
-						$response = curl_exec($curl);
-
-						curl_close($curl);
-						$resp = json_decode($response);
+                     
+					<?php 
+						$resp = getOffers();
 						foreach($resp as $el){
 											?>
-                        <div class="col-md-4 margin_bottom1">
-                           <div class="">
-                              <h3><?php echo $el->name; ?></h3>
-							  <p><?php echo $el->description; ?></p>
-                              <a href="details-offers.php?id=<?php echo $el->id;?>" class="btn btn-primary">Primary1</a>
-                           </div>
-                        </div>
-						<?php }?>
-                        
+							<div class="row">
+						
+								<div class="col-12 m-4 border-bottom pb-3">
+								   <div class="">
+									  <h3><?php echo $el->name; ?></h3>
+									  <p><?php echo $el->description; ?></p>
+									  <a href="offer-details.php?id=<?php echo $el->id;?>" class="btn btn-primary">See details</a>
+								   </div>
+								</div>
 
-                     </div>
+							</div>
+
+                        
+						<?php }?>
                   </div>
                </div>
             </div>
