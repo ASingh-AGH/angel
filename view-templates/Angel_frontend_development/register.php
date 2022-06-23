@@ -1,4 +1,7 @@
-<?php ob_start();?>
+<?php ob_start();
+include_once("phplib.php");
+closeOnRegisted();
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -60,7 +63,7 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item active">
-                                 <a class="nav-link" href="index.html">Home</a>
+                                 <a class="nav-link" href="index.php">Home</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="about.html">About</a>
@@ -77,7 +80,7 @@
                                  <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                               </li>
                               <li class="nav-item d_none">
-                                 <a class="nav-link" href="login.html">Login</a>
+                                 <a class="nav-link" href="login.php">Login</a>
                               </li>
                            </ul>
                         </div>
@@ -107,7 +110,7 @@
             <div class="row">
                <div class="col-md-10 offset-md-1">
 					<?php
-						include_once("phplib.php");
+						
 						if(isset($_POST['username'])){
 							
 							if(register($_POST['username'],$_POST['password'],$_POST['email'],$_POST['fullname'])){

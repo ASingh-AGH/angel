@@ -1,3 +1,4 @@
+<?php include_once("phplib.php"); ?>
 <?php ob_start();?>
 
 <!DOCTYPE html>
@@ -101,13 +102,13 @@
                <div class="col-12">
 				  
                   <div class="titlepage">
-				  <?php include_once("phplib.php");
+				  <?php 
 					if(isset($_POST['username'])){
-						if(auth($_POST['username'],$_POST['password']))
-							header("Location: index.php");
-							
+						if(auth($_POST['username'],$_POST['password'])){
+							header("Location: index.php?login=true");
+						}
 						else{
-							echo echo '<div class="alert alert-danger" role="alert">Bad credentials!</div>';;
+							echo '<div class="alert alert-danger" role="alert">Bad credentials!</div>';
 						}
 						ob_flush();
 					}?>

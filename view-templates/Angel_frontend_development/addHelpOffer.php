@@ -1,4 +1,7 @@
-<?php ob_start();?>
+<?php ob_start();
+include_once("phplib.php");
+closeOnGuest();
+?>
 
 <!DOCTYPE html>
 <html lang="en">

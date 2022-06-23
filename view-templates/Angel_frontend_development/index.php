@@ -1,4 +1,4 @@
-
+<?php include_once("phplib.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +61,7 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item active">
-                                 <a class="nav-link" href="index.html">Home</a>
+                                 <a class="nav-link" href="index.php">Home</a>
                               </li>
 
                               <li class="nav-item">
@@ -75,9 +75,19 @@
                               <li class="nav-item d_none">
                                  <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                               </li>
+							  <?php
+							  if(authenticated() == false){ ?>
                               <li class="nav-item d_none">
-                                 <a class="nav-link" href="#">Login</a>
+                                 <a class="nav-link" href="login.php">Login</a>
                               </li>
+							  <li class="nav-item d_none">
+                                 <a class="nav-link" href="register.php">Register</a>
+                              </li>
+							  <?php } else {?>
+							  <li class="nav-item d_none">
+                                 <a class="nav-link" href="logout.php">Logout</a>
+                              </li>
+							  <?php } ?>
                            </ul>
                         </div>
                      </nav>
@@ -97,6 +107,13 @@
       <!-- categories -->
       <div  class="category">
          <div class="container">
+		 <?php
+			if(isset($_GET['logout']))
+			echo '<div class="alert alert-info" role="alert">Signed out</div>';
+			if(isset($_GET['login']))
+			echo '<div class="alert alert-success" role="alert">Loggged in</div>';
+		 
+		 ?>
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage">

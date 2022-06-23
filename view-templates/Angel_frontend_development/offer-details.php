@@ -1,4 +1,4 @@
-
+<?php include_once("phplib.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,7 +99,7 @@
          <div class="container">
             <div class="row d_flex">
                <div class="col-md-5">
-				  <?php include_once("phplib.php"); $resp = getOfferDetails($_GET['id']);?>
+				  <?php $resp = getOfferDetails($_GET['id']);?>
                   <div class="titlepage">
                      <h2><?php echo $resp->name; ?></h2>
                      <time>11/06/2022 10:30 am</time>

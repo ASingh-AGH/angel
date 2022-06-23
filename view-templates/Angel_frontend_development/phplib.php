@@ -1,4 +1,6 @@
 <?php
+if (!isset($_SESSION)) { session_start(); }
+ob_start();
 
 define("BASE_URL","http://localhost:8080");
 
@@ -112,8 +114,8 @@ function getOffers($page = 0, $perPage = 10){
 
 
 function auth($user="",$pass=""){
-	session_start();
-	if(isset($_SESSION['token'])){
+	
+	if(isset($_SESSION['token']) && $_SESSION['token'] != null && $_SESSION['token']!=""){
 		return true;
 	}
 	else{
@@ -125,13 +127,14 @@ function auth($user="",$pass=""){
 			  CURLOPT_RETURNTRANSFER => true,
 			  CURLOPT_ENCODING => '',
 			  CURLOPT_MAXREDIRS => 10,
+			  CURLOPT_HEADER => 1,
 			  CURLOPT_TIMEOUT => 0,
 			  CURLOPT_FOLLOWLOCATION => true,
 			  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			  CURLOPT_CUSTOMREQUEST => 'POST',
 			  CURLOPT_POSTFIELDS =>'{
-				"username":"user",
-				"password":"aaa"
+				"username":"'.$user.'",
+				"password":"'.$pass.'"
 			}',
 			  CURLOPT_HTTPHEADER => array(
 				'Content-Type: application/json'
@@ -142,10 +145,11 @@ function auth($user="",$pass=""){
 			$headerSize = curl_getinfo( $curl , CURLINFO_HEADER_SIZE );
 			$headerStr = substr( $response , 0 , $headerSize );
 			$bodyStr = substr( $response , $headerSize );
-			var_dump($headerStr);
+			
 
 			// convert headers to array
 			$headers = headersToArray( $headerStr );
+			var_dump($headers);
 			$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 			curl_close($curl);
 			if($httpcode == 200){
@@ -164,7 +168,7 @@ function register($user, $pass, $email, $fullname){
 	$curl = curl_init();
 
 	curl_setopt_array($curl, array(
-	  CURLOPT_URL => 'http://localhost:8080/api/register',
+	  CURLOPT_URL => 'http://localhost:8080/api/user/register',
 	  CURLOPT_RETURNTRANSFER => true,
 	  CURLOPT_ENCODING => '',
 	  CURLOPT_MAXREDIRS => 10,
@@ -195,8 +199,144 @@ function register($user, $pass, $email, $fullname){
 
 
 
-function createHelpOffer(){
-	
+function createHelpOffer($title,$desc,$geox,$geoy,$building,$apNum,$street, $city, $zip,$cat,$img){
+	session_start();
+	if(!isset($_SESSION['token']))
+		return false;
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => 'http://localhost:8080/api/offer',
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => '',
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 0,
+	  CURLOPT_FOLLOWLOCATION => true,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => 'POST',
+	  CURLOPT_POSTFIELDS =>'{
+		"name": "'.$title.'",
+		"description": "'.$desc.'",
+		"loc": {
+			"geoX": '.$geox.',
+			"geoY": '.$geoy.',
+			"building": "'.$building.'",
+			"apartmentNumber": "'.$apNum.'",
+			"street": "'.$street.'",
+			"city": "'.$city.'",
+			"zip": "'.$zip.'"
+		},
+		"accepted": false,
+		"categories": [
+			{
+				"name": "'.$cat.'"
+			}
+		],
+		"imgs": [
+			{
+				"src": "'.$img.'",
+				"alt": "img1"
+			}
+		]
+	}',
+	  CURLOPT_HTTPHEADER => array(
+		'Authorization: '.$_SESSION['token'],
+		'Content-Type: application/json'
+	  ),
+	));
+
+	$response = curl_exec($curl);
+
+	$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+	curl_close($curl);
+	if($httpcode == 200){
+		return true;
+	}
+	return false;
 	
 	
 }
+
+function authenticated(){
+	
+	if(!isset($_SESSION['token']))
+		return false;
+	
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => 'http://localhost:8080/api/user',
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => '',
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 0,
+	  CURLOPT_FOLLOWLOCATION => true,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => 'GET',
+	  CURLOPT_HTTPHEADER => array(
+		'Authorization: '.$_SESSION['token']
+	  ),
+	));
+
+	$response = curl_exec($curl);
+	$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+	curl_close($curl);
+	
+	if($httpcode == 200){
+		return true;
+	}
+	return false;
+}
+
+function getUser(){
+	session_start();
+	if(!isset($_SESSION['token']))
+		return false;
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => 'http://localhost:8080/api/user',
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => '',
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 0,
+	  CURLOPT_FOLLOWLOCATION => true,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => 'GET',
+	  CURLOPT_HTTPHEADER => array(
+		'Authorization: Bearer '.$_SESSION['token']
+	  ),
+	));
+
+	$response = curl_exec($curl);
+
+	curl_close($curl);
+	
+	return json_decode($response);
+	
+}
+
+function closeOnRegisted(){
+	destroyExpired();
+	if(authenticated())
+		header("Location: index.php");
+	ob_flush();
+}
+
+function closeOnGuest(){
+	destroyExpired();
+	if(!authenticated())
+		header("Location: index.php");
+	ob_flush();
+}
+
+
+function destroyExpired(){
+	if(isset($_SESSION['token'])){
+		if(!authenticated()){
+			session_destroy();
+		}
+	}
+}
+
+destroyExpired();

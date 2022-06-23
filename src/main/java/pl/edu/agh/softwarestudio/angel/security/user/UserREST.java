@@ -1,12 +1,13 @@
 package pl.edu.agh.softwarestudio.angel.security.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/user")
 public class UserREST {
 
     @Autowired
@@ -15,7 +16,7 @@ public class UserREST {
     @Autowired
     UserRepo userRepo;
 
-    @PostMapping("/api/register")
+    @PostMapping("/register")
     public User register(
             @RequestBody User user
     ) throws Exception {
@@ -27,5 +28,10 @@ public class UserREST {
         else{
             throw new Exception("User already exists");
         }
+    }
+    @GetMapping
+    public User getUserInfo(UsernamePasswordAuthenticationToken principal){
+        String username = (String)principal.getPrincipal();
+        return userRepo.findByUsername(username);
     }
 }
